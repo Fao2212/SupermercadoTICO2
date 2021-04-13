@@ -1,3 +1,16 @@
 <resources>
-    <string name="app_name">SupermercadoTICO</string>
+    <string name="app_name">TICO</string>
+
+    <!-- Nombres de los Fragmentos del ClienteOComprador -->
+    <string name="tag_user_fragment_busqueda">usr_Busqueda</string>
+    <string name="tag_user_fragment_carrito_compras">usr_Carrito</string>
+    <string name="tag_user_fragmen_facturas_anteriores">usr_Facturas</string>
+    <string name="tag_user_fragment_perfil">usr_Perfil</string>
+
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_user_busqueda_fragment">Hola desde el fragmento de busqueda</string>
+
+
 </resources>
