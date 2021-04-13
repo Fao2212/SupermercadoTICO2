@@ -23,10 +23,10 @@ public class Controlador {
     //---------------------------------------------------------------------------------------
     public void confirmarCarrito()
     {
-        if(carrito.isEmpty())
-            BasicAlert.alert("Confirmar Orden?", AlertType.QUESTION);//TODO:interfaz de alertas
-        else
-            carrito.confirmar();
+//        if(carrito.isEmpty())
+//            BasicAlert.alert("Confirmar Orden?", AlertType.QUESTION);//TODO:interfaz de alertas
+//        else
+//            carrito.confirmar();
     }
 
     public void nuevoCarrito()
@@ -43,22 +43,22 @@ public class Controlador {
 
     public void agregarAlCarrito(Producto producto)
     {
-        if(BasicAlert.alert("Agregar producto al carro?",AlertType.QUESTION))
-            carrito.agregarProducto(producto);
+//        if(BasicAlert.alert("Agregar producto al carro?",AlertType.QUESTION))
+//            carrito.agregarProducto(producto);
     }
 
     public void cancelarPedido()
     {
-        if(carrito.puedeCancelarse())
-            carrito.cancelarPedido();
-        else
-            BasicAlert.alert("Ya expiro el tiempo de cancelacion",AlertType.OKAY);
+//        if(carrito.puedeCancelarse())
+//            carrito.cancelarPedido();
+//        else
+//            BasicAlert.alert("Ya expiro el tiempo de cancelacion",AlertType.OKAY);
     }
 
     public void quitarProducto(Producto producto)
     {
-        if(BasicAlert.alert("Quitar el producto del carro?",AlertType.QUESTION));
-            carrito.quitarProducto(producto);//TODO: EL METODO hace las modificaiones en memoria, hasta que se hace la factura se actualiza la base de datos
+//        if(BasicAlert.alert("Quitar el producto del carro?",AlertType.QUESTION));
+//            carrito.quitarProducto(producto);//TODO: EL METODO hace las modificaiones en memoria, hasta que se hace la factura se actualiza la base de datos
     }
 
     public void verHistorial()

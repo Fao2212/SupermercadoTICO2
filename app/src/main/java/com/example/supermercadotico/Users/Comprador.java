@@ -9,7 +9,7 @@ public class Comprador extends Usuario{
     private String metodoDePago;
     private String contrasena;
 
-    public Comprador(String correoElectronico, String metodoDePago, String contrasena,Controlador controlador) {
+    public  Comprador(String correoElectronico, String metodoDePago, String contrasena,Controlador controlador) {
         this.correoElectronico = correoElectronico;
         this.metodoDePago = metodoDePago;
     }
