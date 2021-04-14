@@ -19,7 +19,6 @@ import com.example.supermercadotico.R;
 import com.example.supermercadotico.Utils.Productos;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Fragment para la busqueda de productos del cliente, por categoría y nombre
@@ -28,7 +27,7 @@ import java.util.List;
  *       Cuando se selecciona un producto que se cargue la info de ese producto
  *       Cuando se busque por nombre que aparezca ese producto o productos
  */
-public class BusquedaFragment extends Fragment {
+public class ProductosFragment extends Fragment {
 
     private static final String TAG = "BusquedaFragment";
 
@@ -40,13 +39,13 @@ public class BusquedaFragment extends Fragment {
 
     //Variables
     private StaggeredGridLayoutManager mStaggeredGridLayoutManager;
-    private BusquedaRecyclerViewAdapter mRecyclerViewAdapter;
+    private ProductosRecyclerViewAdapter mRecyclerViewAdapter;
     private ArrayList<Producto> mListaProductos = new ArrayList<>();
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-       View view = inflater.inflate(R.layout.fragment_busqueda,container, false);
+       View view = inflater.inflate(R.layout.fragment_productos,container, false);
         Log.d(TAG, "onCreateView: Iniciado");
 
         mRecyclerView = view.findViewById(R.id.busqueda_recyclerView);
@@ -72,7 +71,7 @@ public class BusquedaFragment extends Fragment {
         mRecyclerView.setLayoutManager(mStaggeredGridLayoutManager);
 
         //Se agregan los datos al adapterView
-        mRecyclerViewAdapter = new BusquedaRecyclerViewAdapter(mListaProductos, getActivity());
+        mRecyclerViewAdapter = new ProductosRecyclerViewAdapter(mListaProductos, getActivity());
         mRecyclerView.setAdapter(mRecyclerViewAdapter);
 
     }

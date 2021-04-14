@@ -8,20 +8,17 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.annotation.GlideModule;
-import com.bumptech.glide.request.RequestOptions;
 import com.example.supermercadotico.Models.Producto;
 import com.example.supermercadotico.R;
 
 import java.util.ArrayList;
 
 //Para poner la lista de items
-public class BusquedaRecyclerViewAdapter extends RecyclerView.Adapter<BusquedaRecyclerViewAdapter.ViewHolder> {
+public class ProductosRecyclerViewAdapter extends RecyclerView.Adapter<ProductosRecyclerViewAdapter.ViewHolder> {
 
     private static final String TAG = "BusquedaRecyclerViewAda";
 
@@ -29,14 +26,14 @@ public class BusquedaRecyclerViewAdapter extends RecyclerView.Adapter<BusquedaRe
     private ArrayList<Producto> mProductos = new ArrayList<>();
     private Context mContext;
 
-    public BusquedaRecyclerViewAdapter(ArrayList<Producto> pProductos, Context pContext) {
+    public ProductosRecyclerViewAdapter(ArrayList<Producto> pProductos, Context pContext) {
         mProductos = pProductos;
         mContext = pContext;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_busqueda_producto,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_producto_tarjeta,parent,false);
         ViewHolder holder = new ViewHolder(view);
         return holder;
     }

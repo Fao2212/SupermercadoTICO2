@@ -1,14 +1,12 @@
 package com.example.supermercadotico;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.example.supermercadotico.Fragments.BusquedaFragment;
+import com.example.supermercadotico.Fragments.ProductosFragment;
 
 /**
  * Clase de Activity para el cliente, va a mostrar los fragments que son especificos para el cliente
@@ -34,7 +32,7 @@ public class ClienteActivity extends AppCompatActivity {
      * Inicializa el Fragment de busqueda
      */
     private void initBusqueda(){
-        BusquedaFragment busquedaFragment = new BusquedaFragment();
+        ProductosFragment busquedaFragment = new ProductosFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.cliente_content_frame, busquedaFragment, getString(R.string.tag_user_fragment_busqueda));
         transaction.addToBackStack(getString(R.string.tag_user_fragment_busqueda));
