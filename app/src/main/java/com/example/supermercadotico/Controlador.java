@@ -2,6 +2,7 @@ package com.example.supermercadotico;
 
 import com.example.supermercadotico.Alerts.AlertType;
 import com.example.supermercadotico.Alerts.BasicAlert;
+import com.example.supermercadotico.Models.Producto;
 import com.example.supermercadotico.Users.Comprador;
 import com.example.supermercadotico.Users.Empleado;
 import com.example.supermercadotico.Users.Gerente;

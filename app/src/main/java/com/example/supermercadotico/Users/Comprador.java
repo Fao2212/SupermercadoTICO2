@@ -1,7 +1,7 @@
 package com.example.supermercadotico.Users;
 
 import com.example.supermercadotico.Controlador;
-import com.example.supermercadotico.Producto;
+import com.example.supermercadotico.Models.Producto;
 import com.example.supermercadotico.Sucursal;
 
 public class Comprador extends Usuario{

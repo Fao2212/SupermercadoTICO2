@@ -6,6 +6,13 @@
     tools:context=".Fragments.BusquedaFragment">
 
     <!-- TODO: Update blank fragment layout -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/busqueda_recyclerView"
+        android:orientation="vertical">
+
+    </androidx.recyclerview.widget.RecyclerView>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

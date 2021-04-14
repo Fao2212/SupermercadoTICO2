@@ -11,24 +11,28 @@ import android.widget.Toast;
 import com.example.supermercadotico.Fragments.BusquedaFragment;
 
 /**
- *
+ * Clase de Activity para el cliente, va a mostrar los fragments que son especificos para el cliente
  */
 public class ClienteActivity extends AppCompatActivity {
 
+    /**
+     * El tag de cada activity y fragmento esta en res/values/strings.xml
+     */
     private static final String TAG = "ClienteActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cliente);
-        Toast toast1 = Toast.makeText(getApplicationContext(), "Activity Cliente", Toast.LENGTH_SHORT);
-        toast1.show();
         Log.d(TAG, "onCreate: Crear Cliente Activity");
 
         //Inicializa el Fragment de Busqueda del Cliente
         initBusqueda();
     }
 
+    /**
+     * Inicializa el Fragment de busqueda
+     */
     private void initBusqueda(){
         BusquedaFragment busquedaFragment = new BusquedaFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
