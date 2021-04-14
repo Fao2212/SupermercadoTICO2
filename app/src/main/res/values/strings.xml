@@ -6,6 +6,8 @@
     <string name="tag_user_fragment_carrito_compras">usr_Carrito</string>
     <string name="tag_user_fragmen_facturas_anteriores">usr_Facturas</string>
     <string name="tag_user_fragment_perfil">usr_Perfil</string>
+    <string name="tag_user_fragment_descripcion_producto">usr_Descripcion</string>
+
 
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -15,6 +17,9 @@
     <string name="imagenproducto">imagenProducto</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Intent y bundle Extras -->
+    <string name="intent_producto">intent_producto</string>
 
 
 </resources>
