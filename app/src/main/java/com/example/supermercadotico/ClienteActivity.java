@@ -8,8 +8,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 
+import com.example.supermercadotico.FragmentsCliente.FacturaDescripcionFragment;
+import com.example.supermercadotico.FragmentsCliente.FacturasFragment;
 import com.example.supermercadotico.FragmentsCliente.ProductoDescripcionFragment;
 import com.example.supermercadotico.FragmentsCliente.ProductosFragment;
+import com.example.supermercadotico.Models.Factura;
 import com.example.supermercadotico.Models.Producto;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
@@ -37,7 +40,8 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
 
         //Inicializa el Fragment de Busqueda del Cliente
         initBarraNavegacion();
-        initFragmentoProductos();
+        //initFragmento_Productos();
+        initFragmento_Facturas();
 
     }
 
@@ -80,20 +84,30 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
     }
 
     /**
-     * Inicializa el Fragment de busqueda
+     * Inicializa el Fragment de Productos
      */
-    private void initFragmentoProductos(){
+    private void initFragmento_Productos(){
         ProductosFragment busquedaFragment = new ProductosFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.cliente_content_frame, busquedaFragment, getString(R.string.tag_user_fragment_busqueda));
+        transaction.replace(R.id.cliente_content_frame, busquedaFragment, getString(R.string.tag_user_fragment_lista_productos));
         transaction.addToBackStack(getString(R.string.tag_user_fragment_lista_productos));
+        transaction.commit();
+    }
+
+    /**
+     * Inicializa el Fragment de Facturas
+     */
+    private void initFragmento_Facturas(){
+        FacturasFragment facturasFragment = new FacturasFragment();   //todo cambiar al fragment que se quiere cargar
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.cliente_content_frame, facturasFragment, getString(R.string.tag_user_fragment_facturas_anteriores));
+        transaction.addToBackStack(getString(R.string.tag_user_fragment_facturas_anteriores));
         transaction.commit();
     }
 
 
     //Ya le llego el producto que el usuario seleccionó, y ahora lo va a cargar en la descripción
-    @Override
-    public void inflateDescripcionProductoFragment(Producto pProducto) {
+    public void inflateDescripcion_Producto_Fragment(Producto pProducto) {
         ProductoDescripcionFragment productoDescripcionFragment = new ProductoDescripcionFragment();
 
         //Acá es donde le pasa el objeto al fragment de la descripción
@@ -104,6 +118,21 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.cliente_content_frame, productoDescripcionFragment, getString(R.string.tag_user_fragment_descripcion_producto));
         transaction.addToBackStack(getString(R.string.tag_user_fragment_descripcion_producto));
+        transaction.commit();
+    }
+
+    //Ya le llego la factura que el usuario seleccionó, y ahora lo va a cargar en la descripción
+    public void inflateDescripcion_Factura_Fragment(Factura pFactura) {   //todo hay que hacer uno de estos cuando se comunica y abre otro fagment copy paste de otro código
+        FacturaDescripcionFragment facturaDescripcionFragment = new FacturaDescripcionFragment(); //todo: cambiar acá al fragment deseado
+
+        //Acá es donde le pasa el objeto al fragment de la descripción
+        Bundle args= new Bundle();
+        args.putParcelable(getString(R.string.intent_factura),pFactura);
+        facturaDescripcionFragment.setArguments(args); //Acá se lo pasa   //  //todo: cambiar el fragment acá
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.cliente_content_frame, facturaDescripcionFragment, getString(R.string.tag_user_fragment_descripcion_facturas_anteriores));  //todo cambiar el fragment aca y cambiar el tag
+        transaction.addToBackStack(getString(R.string.tag_user_fragment_descripcion_facturas_anteriores));
         transaction.commit();
     }
 

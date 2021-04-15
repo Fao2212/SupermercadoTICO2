@@ -4,7 +4,8 @@
     <!-- Nombres de los Fragmentos del ClienteOComprador -->
     <string name="tag_user_fragment_busqueda">usr_Busqueda</string>
     <string name="tag_user_fragment_carrito_compras">usr_Carrito</string>
-    <string name="tag_user_fragmen_facturas_anteriores">usr_Facturas</string>
+    <string name="tag_user_fragment_facturas_anteriores">usr_Facturas</string>
+    <string name="tag_user_fragment_descripcion_facturas_anteriores">usr_Facturas</string>
     <string name="tag_user_fragment_perfil">usr_Perfil</string>
     <string name="tag_user_fragment_descripcion_producto">usr_Descripcion</string>
     <string name="tag_user_fragment_lista_productos">usr_Productos</string>
@@ -20,6 +21,9 @@
 
     <!-- Intent y bundle Extras -->
     <string name="intent_producto">intent_producto</string>
+    <string name="intent_factura">intent_factura</string>
+
+
 
 
 </resources>

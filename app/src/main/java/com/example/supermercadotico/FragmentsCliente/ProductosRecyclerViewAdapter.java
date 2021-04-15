@@ -65,7 +65,7 @@ public class ProductosRecyclerViewAdapter extends RecyclerView.Adapter<Productos
             Log.d(TAG, "onBindViewHolder: clicked on:" + mProductos.get(position).getNombre() );
 
             //Cuando se presione un producto, va a pasar por la interfaz y el activity lo va a cargar en el fragmento de la descripcion
-            mInterface.inflateDescripcionProductoFragment(mProductos.get(position));
+            mInterface.inflateDescripcion_Producto_Fragment(mProductos.get(position));
         }));
 
     }
