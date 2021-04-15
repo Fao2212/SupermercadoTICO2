@@ -90,6 +90,14 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
         transaction.commit();
     }
 
+    private void initFragmentoLogIn()
+    {
+        LogInFragment  = new LogInFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.cliente_content_frame, logInFragment, getString(R.string.tag_user_fragment_busqueda));
+        transaction.addToBackStack(getString(R.string.tag_user_fragment_lista_productos));
+        transaction.commit();
+    }
 
     //Ya le llego el producto que el usuario seleccionó, y ahora lo va a cargar en la descripción
     @Override

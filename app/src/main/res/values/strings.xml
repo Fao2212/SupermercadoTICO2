@@ -21,6 +21,14 @@
 
     <!-- Intent y bundle Extras -->
     <string name="intent_producto">intent_producto</string>
+    <string name="id_laboral">Id Laboral:</string>
+    <string name="confirmar_cambios">Confirmar Cambios</string>
+    <string name="apellido">Apellido:</string>
+    <string name="cedula">Cedula:</string>
+    <string name="puesto">Puesto:</string>
+    <string name="nombre">Nombre:</string>
+    <string name="funciones">Funciones:</string>
+    <string name="todo">todo</string>
 
 
 </resources>
