@@ -81,12 +81,11 @@ public class FacturaDescripcionFragment extends Fragment {
 
     //Se inicializa, o sea se carga toda la info del Producto en el layout
     private void init(){
-        Log.d(TAG, "init: Initializing" + getString(R.string.tag_user_fragment_descripcion_producto));
+        Log.d(TAG, "init: Initializing" + getString(R.string.tag_user_fragment_descripcion_producto));    //todo: cambiar todo con lo del
 
         //Si el producto no es null, osea no le llegó el produto del fragment anterior
         if (mFactura !=null){ //Si le llegó el Producto
                                //!!! Acá le pone la imagen pero en este caso, no hay que hacerlo, ver ejemplo en lo de productos
-
 
             mSucursal_factura_frag.setText(mFactura.getSucursal());  //Carga el nombre y los datos a los componentes
             mNombre_usuario_factura_frag.setText(mFactura.getUsuario());
@@ -95,5 +94,4 @@ public class FacturaDescripcionFragment extends Fragment {
             mTotal_fact_frag.setText(mFactura.getTotal());
         }
     }
-
 }

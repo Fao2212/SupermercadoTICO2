@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".FragmentsCliente.PerfilFragment">
+    tools:context=".FragmentsCliente.PerfilClienteFragment">
 
     <!--
        ID likeButton: guardar_cambios_boton_perfil_cliente_frag

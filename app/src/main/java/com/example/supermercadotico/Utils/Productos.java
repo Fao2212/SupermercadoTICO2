@@ -2,6 +2,7 @@ package com.example.supermercadotico.Utils;
 
 import android.net.Uri;
 
+import com.example.supermercadotico.Models.Cliente;
 import com.example.supermercadotico.Models.Factura;
 import com.example.supermercadotico.Models.Producto;
 import com.example.supermercadotico.R;
@@ -17,6 +18,18 @@ public class Productos {
     public Factura[] FACTURAS={
       Fact1, Fact2, Fact3
     };
+
+    public  Cliente cliente1 = new Cliente("https://www.volunteeringsolutions.com/asset/uploads/img/page_header_image/costa_rica/san_jose/651/651_costarica.jpg",
+            "Alex01",
+            "Alex",
+            "Rodriguez",
+            "Cartago",
+            "alealex@hotmail.com",
+            "1234");
+
+    public Cliente getCliente1() {
+        return cliente1;
+    }
 
     /*
     PRODUCTOS
@@ -36,5 +49,5 @@ public class Productos {
     public static final Factura Fact1 = new Factura("SanJose","Alex01","1/1/2021","Sandía x1 9900","9900","0001");
     public static final Factura Fact2 = new Factura("Alaueja","Alex01","2/2/2021","Sandía x2 19800","19800","0002");
     public static final Factura Fact3 = new Factura("Guanacaste","Alex01","3/3/2021","Sandía x3 29700","29700", "0003");
-    
+
 }

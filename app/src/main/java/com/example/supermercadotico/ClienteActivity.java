@@ -10,12 +10,17 @@ import android.view.MenuItem;
 
 import com.example.supermercadotico.FragmentsCliente.FacturaDescripcionFragment;
 import com.example.supermercadotico.FragmentsCliente.FacturasFragment;
+import com.example.supermercadotico.FragmentsCliente.PerfilClienteFragment;
 import com.example.supermercadotico.FragmentsCliente.ProductoDescripcionFragment;
 import com.example.supermercadotico.FragmentsCliente.ProductosFragment;
+import com.example.supermercadotico.Models.Cliente;
 import com.example.supermercadotico.Models.Factura;
 import com.example.supermercadotico.Models.Producto;
+import com.example.supermercadotico.Utils.Productos;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
+
+import java.util.ArrayList;
 
 /**
  * Clase de Activity para el cliente, va a mostrar los fragments que son especificos para el cliente
@@ -25,6 +30,9 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
 
      //El tag de cada activity y fragmento esta en res/values/strings.xml
     private static final String TAG = "ClienteActivity";
+
+
+    private Productos infodummyparaprobar;
 
     //widgets
     //Barra de navegación
@@ -38,10 +46,16 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
         mBarraNavegacion = findViewById(R.id.navbar_inferior_view_cliente); //Barra de navegacion
         mBarraNavegacion.setOnNavigationItemSelectedListener(this);
 
-        //Inicializa el Fragment de Busqueda del Cliente
-        initBarraNavegacion();
-        //initFragmento_Productos();
-        initFragmento_Facturas();
+//        //Inicializa el Fragment de Busqueda del Cliente
+//        initBarraNavegacion();
+//
+//        //initFragmento_Productos();
+//        initFragmento_Facturas();
+        infodummyparaprobar = new Productos();
+
+        //Init fragmento_Perfil
+        initFragmento_Perfil();
+
 
     }
 
@@ -105,6 +119,23 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
         transaction.commit();
     }
 
+    /**
+     * Inicializa el Fragment de Perfil del CLiente
+     */
+    private void initFragmento_Perfil(){
+        PerfilClienteFragment perfilClienteFragment = new PerfilClienteFragment(); //todo: cambiar acá al fragment deseado
+
+        //Acá es donde le pasa el objeto al fragment de la descripción
+        Bundle args= new Bundle();
+        args.putParcelable(getString(R.string.intent_perfil_cliente),infodummyparaprobar.getCliente1());
+        perfilClienteFragment.setArguments(args); //Acá se lo pasa   //  //todo: cambiar el fragment acá
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.cliente_content_frame, perfilClienteFragment, getString(R.string.tag_user_fragment_perfil));  //todo cambiar el fragment aca y cambiar el tag
+        transaction.addToBackStack(getString(R.string.tag_user_fragment_perfil));
+        transaction.commit();
+    }
+
 
     //Ya le llego el producto que el usuario seleccionó, y ahora lo va a cargar en la descripción
     public void inflateDescripcion_Producto_Fragment(Producto pProducto) {
@@ -134,6 +165,25 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
         transaction.replace(R.id.cliente_content_frame, facturaDescripcionFragment, getString(R.string.tag_user_fragment_descripcion_facturas_anteriores));  //todo cambiar el fragment aca y cambiar el tag
         transaction.addToBackStack(getString(R.string.tag_user_fragment_descripcion_facturas_anteriores));
         transaction.commit();
+    }
+
+    @Override
+    public ArrayList<Producto> getListaProductos() {
+        Log.d(TAG, "getListaProductos: mandadnolista de productos");
+        return null;
+    }
+
+    @Override
+    public Cliente getCliente() {
+        Log.d(TAG, "getCliente: mandando cliente");
+
+        return infodummyparaprobar.cliente1;
+    }
+
+    @Override
+    public ArrayList<Factura> getListaFacturasAnteriores() {
+        Log.d(TAG, "getListaFacturasAnteriores: mandando lista de fcaturas");
+        return null;
     }
 
 

@@ -22,6 +22,8 @@
     <!-- Intent y bundle Extras -->
     <string name="intent_producto">intent_producto</string>
     <string name="intent_factura">intent_factura</string>
+    <string name="intent_perfil_cliente">intent_perfil_cliente</string>
+
 
 
 
