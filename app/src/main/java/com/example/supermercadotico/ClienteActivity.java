@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.MenuItem;
 
 import com.example.supermercadotico.Fragments.DescripcionProductoFragment;
+import com.example.supermercadotico.Fragments.LogInFragment;
 import com.example.supermercadotico.Fragments.ProductosFragment;
 import com.example.supermercadotico.Models.Producto;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -35,9 +36,8 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
         mBarraNavegacion = findViewById(R.id.navbar_inferior_view_cliente); //Barra de navegacion
         mBarraNavegacion.setOnNavigationItemSelectedListener(this);
 
-        //Inicializa el Fragment de Busqueda del Cliente
-        initBarraNavegacion();
-        initFragmentoProductos();
+
+        initFragmentoLogIn();
 
     }
 
@@ -92,12 +92,14 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
 
     private void initFragmentoLogIn()
     {
-        LogInFragment  = new LogInFragment();
+        LogInFragment logInFragment  = new LogInFragment(this);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.cliente_content_frame, logInFragment, getString(R.string.tag_user_fragment_busqueda));
-        transaction.addToBackStack(getString(R.string.tag_user_fragment_lista_productos));
+        transaction.replace(R.id.cliente_content_frame, logInFragment, getString(R.string.tag_user_fragment_login));
+        transaction.addToBackStack(getString(R.string.tag_user_fragment_login));
         transaction.commit();
     }
+
+
 
     //Ya le llego el producto que el usuario seleccionó, y ahora lo va a cargar en la descripción
     @Override
@@ -113,6 +115,14 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
         transaction.replace(R.id.cliente_content_frame, descripcionProductoFragment, getString(R.string.tag_user_fragment_descripcion_producto));
         transaction.addToBackStack(getString(R.string.tag_user_fragment_descripcion_producto));
         transaction.commit();
+    }
+
+    //Usado para accesar desde otro fragmento a los metodos de esta clase
+    @Override
+    public void initUserView() {
+        //Inicializa el Fragment de Busqueda del Cliente
+        initBarraNavegacion();
+        initFragmentoProductos();
     }
 
 
