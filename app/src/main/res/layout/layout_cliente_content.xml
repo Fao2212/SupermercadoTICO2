@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/cliente_content_frame"
+        android:layout_above="@id/navbar_inferior_view_cliente"
         ></FrameLayout>
+
+    <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:id="@+id/navbar_inferior_view_cliente"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/navbar_inferior_cliente"
+        app:backgroundTint="@color/gris_claro"
+        ></com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx>
 
 </RelativeLayout>

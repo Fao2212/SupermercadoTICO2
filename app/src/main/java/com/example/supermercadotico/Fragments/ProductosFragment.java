@@ -29,9 +29,10 @@ import java.util.ArrayList;
  */
 public class ProductosFragment extends Fragment {
 
+    //Tag para reconocer la clase
     private static final String TAG = "BusquedaFragment";
 
-    //constante
+    //Numero de columnas del fview
     private static final int NUM_COLUMNAS = 2;
 
     //Widgets
@@ -48,7 +49,10 @@ public class ProductosFragment extends Fragment {
        View view = inflater.inflate(R.layout.fragment_productos,container, false);
         Log.d(TAG, "onCreateView: Iniciado");
 
-        mRecyclerView = view.findViewById(R.id.busqueda_recyclerView);
+        //Carga el recycler view
+        mRecyclerView = view.findViewById(R.id.productos_recyclerView);
+
+        //Carga los productos a la lista
         findProducts();
        return view;
     }
@@ -61,10 +65,12 @@ public class ProductosFragment extends Fragment {
             mListaProductos.add(producto);
         }
 
+        //Inicia el recycler view
         initRecyclerView();
 
     }
 
+    //Crea las tarjetas
     private void initRecyclerView(){
         Log.d(TAG, "initRecyclerView: init recyclerview");
         mStaggeredGridLayoutManager = new StaggeredGridLayoutManager(NUM_COLUMNAS, LinearLayoutManager.VERTICAL);

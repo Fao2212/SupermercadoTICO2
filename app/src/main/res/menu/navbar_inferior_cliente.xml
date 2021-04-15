@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/facturas_nav_cliente"
+        android:icon="@drawable/receipt_black"
+        android:layout_centerVertical="true"
+        android:title=""
+        ></item>
+    <item
+        android:id="@+id/busqueda_nav_cliente"
+        android:icon="@drawable/search_black"
+        android:layout_centerVertical="true"
+        android:title=""
+        ></item>
+    <item
+        android:id="@+id/carrito_nav_cliente"
+        android:icon="@drawable/shopping_cart_black"
+        android:layout_centerVertical="true"
+        android:title=""
+
+        ></item>
+    <item
+        android:id="@+id/perfil_nav_cliente"
+        android:icon="@drawable/users_alt_black"
+        android:layout_centerVertical="true"
+        android:title=""
+        ></item>
+    <item
+        android:id="@+id/cerarsesion_nav_cliente"
+        android:icon="@mipmap/ic_launcher"
+        android:layout_centerVertical="true"
+        android:title=""
+        ></item>
+</menu>

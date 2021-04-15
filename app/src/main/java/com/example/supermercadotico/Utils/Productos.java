@@ -6,7 +6,7 @@ import com.example.supermercadotico.Models.Producto;
 import com.example.supermercadotico.R;
 
 /**
- * Clase utilitaria solo para guardar productos, y que se puedan cargar en memoria, no se va para el github
+ * Clase utilitaria solo para guardar productos, y que se puedan cargar en memoria, no se va para el github, al final se cargo en el github
  */
 public class Productos {
     public Producto[] PRODUCTOS={

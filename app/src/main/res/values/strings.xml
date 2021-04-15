@@ -7,6 +7,7 @@
     <string name="tag_user_fragmen_facturas_anteriores">usr_Facturas</string>
     <string name="tag_user_fragment_perfil">usr_Perfil</string>
     <string name="tag_user_fragment_descripcion_producto">usr_Descripcion</string>
+    <string name="tag_user_fragment_lista_productos">usr_Productos</string>
 
 
 
