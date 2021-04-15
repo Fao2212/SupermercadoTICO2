@@ -1,4 +1,4 @@
-package com.example.supermercadotico.Fragments;
+package com.example.supermercadotico.FragmentsCliente;
 
 import android.content.Context;
 import android.util.Log;

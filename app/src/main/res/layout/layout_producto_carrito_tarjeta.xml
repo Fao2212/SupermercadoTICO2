@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:layout_margin="5dp">
+
+
+    <!--
+        ID CardView = tarjeta_producto_carrito
+        ID nombre Producto: nombre_producto_tarjeta_carrito
+        ID precio Producto: precio_producto_tarjeta_carrito
+
+        ID boton menos : boton_menos_tarjeta_carrito
+        ID cantidad Producto: cantidad_producto_tarjeta_carrito
+        ID bton mas: boton_mas_tarjeta_carrito
+     -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/tarjeta_producto_carrito"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        app:cardBackgroundColor="#219653"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="1dp"
+        app:cardMaxElevation="2dp">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/nombre_producto_tarjeta_carrito"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/nombre_producto"
+                android:textSize="20dp"
+                android:textColor="#fff" />
+
+
+            <TextView
+                android:id="@+id/precio_producto_tarjeta_carrito"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/nombre_producto_tarjeta_carrito"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/precio_producto"
+                android:textSize="20dp"
+                android:textColor="#fff" />
+
+            <RelativeLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@id/nombre_producto_tarjeta_carrito"
+                android:padding="5dp"
+                android:background="@color/gris_claro"
+                android:layout_centerInParent="true"
+                >
+
+                <RelativeLayout
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_toLeftOf="@id/cantidad_producto_tarjeta_carrito"
+                    android:id="@+id/boton_menos_tarjeta_carrito">
+
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/minus_circle_black"
+                        android:layout_centerVertical="true"
+                        android:id="@+id/image_back_arrow"/>
+
+                </RelativeLayout>
+
+
+                <TextView
+                    android:id="@+id/cantidad_producto_tarjeta_carrito"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:textSize="30dp"
+                    android:text="999"
+                    android:layout_centerInParent="true"
+                    android:textColor="@color/negro" />
+
+                <RelativeLayout
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_toRightOf="@id/cantidad_producto_tarjeta_carrito"
+                    android:id="@+id/boton_mas_tarjeta_carrito">
+
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/plus_circle_black"
+                        android:layout_centerVertical="true"
+                        android:id="@+id/imagen_mas_tarjetaCarrito"/>
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

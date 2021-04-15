@@ -4,19 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".FragmentsCliente.ProductoDescripcionFragment">
-
-    <!--
-    ID BOTON ATRAS = boton_atras_desc
-    ID likeButton: agregar_carrito_desc
-    ID Imagen Producto: imagen_Producto_desc
-    ID textView nombre producto: nombreProducto_desc
-    ID TextView precio: precio_desc
-    ID textView stock: stock_desc
-    ID textview descripcion: descripcion_desc
-    ID textview categoria: categoria_desc
-    ID textview Proveedor: proveedor_desc
-    -->
+    tools:context=".FragmentsCliente.FacturaDescripcionFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
@@ -24,11 +12,19 @@
         android:background="@color/gris_claro"
         android:id="@+id/toolbar">
 
-
+        <!--
+        ID BOTON ATRAS = boton_atras_fact
+        ID Imagen Factura: imagen_Factura_frag
+        ID textView Sucursal: sucursal_factura_frag
+        ID TextView nombre usuario: nombre_usuario_factura_frag
+        ID textView fecha: fecha_factura_frag
+        ID textview productos: productos_factura_frag
+        ID total de la compra: total_fact_frag
+        -->
         <RelativeLayout
             android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:id="@+id/boton_atras_desc">
+            android:id="@+id/boton_atras_fact">
 
             <ImageView
                 android:layout_width="25dp"
@@ -80,26 +76,8 @@
                 android:layout_height="200dp"
                 android:layout_marginTop="30dp">
 
-                <com.like.LikeButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/agregar_carrito_desc"
-                    app:icon_size="40dp"
-                    app:like_drawable="@drawable/shopping_cart_green"
-                    app:unlike_drawable="@drawable/shopping_cart_black"
-                    app:circle_start_color="@color/verde"
-                    app:circle_end_color="@color/naranja"
-                    app:dots_primary_color="@color/naranja"
-                    app:dots_secondary_color="@color/verde"
-                    app:anim_scale_factor="2.5"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true">
-
-                </com.like.LikeButton>
-
                 <ImageView
-                    android:id="@+id/imagen_Producto_desc"
+                    android:id="@+id/imagen_Factura_frag"
                     android:layout_width="200dp"
                     android:layout_height="200dp"
                     android:contentDescription="@string/imagenproducto"
@@ -129,10 +107,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@null"
-                        android:id="@+id/nombreProducto_desc"
+                        android:id="@+id/sucursal_factura_frag"
                         android:layout_marginLeft="5dp"
                         android:textSize="20sp"
-                        android:text="@string/nombre_producto"
+                        android:text="Sucursal"
                         android:layout_gravity="center_vertical"
                         android:gravity="center_horizontal"
                         android:textColor="@color/verde"/>
@@ -152,8 +130,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Precio: "
-                            android:id="@+id/text_precio_desc"
+                            android:text="Usuario: "
+                            android:id="@+id/text_nombre_usuario_factura_frag"
                             android:textSize="20sp"
                             android:textColor="@color/verde"
                             android:layout_gravity="center_vertical"/>
@@ -161,12 +139,12 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="$999999"
-                            android:id="@+id/precio_desc"
+                            android:text="Alex01"
+                            android:id="@+id/nombre_usuario_factura_frag"
                             android:textSize="20sp"
                             android:textColor="@color/verde"
                             android:layout_gravity="center_vertical"
-                            android:layout_toRightOf="@+id/text_precio_desc"/>
+                            android:layout_toRightOf="@+id/text_nombre_usuario_factura_frag"/>
 
                     </RelativeLayout>
 
@@ -186,8 +164,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Cant Inventario: "
-                            android:id="@+id/text_stock_desc"
+                            android:text="Fecha: "
+                            android:id="@+id/text_fecha_factura_frag"
                             android:textSize="20sp"
                             android:textColor="@color/verde"
                             android:layout_gravity="center_vertical"/>
@@ -196,12 +174,12 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="200"
-                            android:id="@+id/stock_desc"
+                            android:text="05/03/2021"
+                            android:id="@+id/fecha_factura_frag"
                             android:textSize="20sp"
                             android:textColor="@color/verde"
                             android:layout_gravity="center_vertical"
-                            android:layout_toRightOf="@+id/text_stock_desc"/>
+                            android:layout_toRightOf="@+id/text_fecha_factura_frag"/>
 
                     </RelativeLayout>
 
@@ -222,8 +200,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Descripción: "
-                            android:id="@+id/text_descripcion_desc"
+                            android:text="Productos: "
+                            android:id="@+id/text_productos_factura_frag"
                             android:textSize="20sp"
                             android:textColor="@color/verde"
                             android:layout_gravity="center_vertical"/>
@@ -232,12 +210,12 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Es una fruta muy buena"
-                            android:id="@+id/descripcion_desc"
+                            android:text=" Sandía X1 900"
+                            android:id="@+id/productos_factura_frag"
                             android:textSize="20sp"
                             android:textColor="@color/verde"
                             android:layout_gravity="center_vertical"
-                            android:layout_toRightOf="@+id/text_descripcion_desc"/>
+                            android:layout_toRightOf="@+id/text_productos_factura_frag"/>
 
                     </RelativeLayout>
 
@@ -256,67 +234,31 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Categoría: "
-                            android:id="@+id/text_categoria_desc"
+                            android:text="Total: "
+                            android:id="@+id/text_total_fact_frag"
                             android:textSize="20sp"
                             android:textColor="@color/verde"
                             android:layout_gravity="center_vertical"/>
-
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Fruta"
-                            android:id="@+id/categoria_desc"
+                            android:id="@+id/total_fact_frag"
                             android:textSize="20sp"
                             android:textColor="@color/verde"
                             android:layout_gravity="center_vertical"
-                            android:layout_toRightOf="@+id/text_categoria_desc"/>
+                            android:layout_toRightOf="@+id/text_total_fact_frag"/>
 
                     </RelativeLayout>
 
                 </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize">
-
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Proveedor: "
-                            android:id="@+id/text_proveedor_desc"
-                            android:textSize="20sp"
-                            android:textColor="@color/verde"
-                            android:layout_gravity="center_vertical"/>
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="La fruta felíz"
-                            android:id="@+id/proveedor_desc"
-                            android:textSize="20sp"
-                            android:textColor="@color/verde"
-                            android:layout_gravity="center_vertical"
-                            android:layout_toRightOf="@+id/text_proveedor_desc"/>
-
-                    </RelativeLayout>
-
-                </RelativeLayout>
-
 
             </LinearLayout>
-
 
         </LinearLayout>
 
     </ScrollView>
+
 
 </RelativeLayout>

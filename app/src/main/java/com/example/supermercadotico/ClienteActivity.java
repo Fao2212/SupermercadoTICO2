@@ -8,8 +8,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 
-import com.example.supermercadotico.Fragments.DescripcionProductoFragment;
-import com.example.supermercadotico.Fragments.ProductosFragment;
+import com.example.supermercadotico.FragmentsCliente.ProductoDescripcionFragment;
+import com.example.supermercadotico.FragmentsCliente.ProductosFragment;
 import com.example.supermercadotico.Models.Producto;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
@@ -94,15 +94,15 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
     //Ya le llego el producto que el usuario seleccionó, y ahora lo va a cargar en la descripción
     @Override
     public void inflateDescripcionProductoFragment(Producto pProducto) {
-        DescripcionProductoFragment descripcionProductoFragment = new DescripcionProductoFragment();
+        ProductoDescripcionFragment productoDescripcionFragment = new ProductoDescripcionFragment();
 
         //Acá es donde le pasa el objeto al fragment de la descripción
         Bundle args= new Bundle();
         args.putParcelable(getString(R.string.intent_producto),pProducto);
-        descripcionProductoFragment.setArguments(args); //Acá se lo pasa
+        productoDescripcionFragment.setArguments(args); //Acá se lo pasa
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.cliente_content_frame, descripcionProductoFragment, getString(R.string.tag_user_fragment_descripcion_producto));
+        transaction.replace(R.id.cliente_content_frame, productoDescripcionFragment, getString(R.string.tag_user_fragment_descripcion_producto));
         transaction.addToBackStack(getString(R.string.tag_user_fragment_descripcion_producto));
         transaction.commit();
     }

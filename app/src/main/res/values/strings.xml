@@ -10,7 +10,6 @@
     <string name="tag_user_fragment_lista_productos">usr_Productos</string>
 
 
-
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_user_busqueda_fragment">Hola desde el fragmento de busqueda</string>
     <string name="nombre_producto">Nombre Producto</string>

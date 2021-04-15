@@ -1,4 +1,4 @@
-package com.example.supermercadotico.Fragments;
+package com.example.supermercadotico.FragmentsCliente;
 
 import android.os.Bundle;
 
@@ -24,7 +24,7 @@ import com.like.OnLikeListener;
  * Implementa OnLikeListener, para el botón de agregar al carrito.
  * El fragmento de Productos, le pasa un objeto producto a este view para cargarlo en pantalla
  */
-public class DescripcionProductoFragment extends Fragment implements OnLikeListener {
+public class ProductoDescripcionFragment extends Fragment implements OnLikeListener {
     //Tag para los logs y saber de donde se están haciendo
     private static final String TAG = "DescripcionProductoFrag";
 
