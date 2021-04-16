@@ -1,5 +1,6 @@
 package com.example.supermercadotico.FragmentsCliente;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,11 +28,15 @@ public class PerfilUsuarioFragment extends Fragment implements OnLikeListener {
     //Objeto donde se va a cargar la información que el cliente seleccionó del fragment pasado
     private Usuario mUsuario;                                   //todo: cambiar el objeto que se va a mostrar al objeto correspondiende
     private IClienteActivity mInterfaceClienteActivity;
-
+    Context mContext;
 
     //widgets Todo: cambiar los widgets a los widgets que se van a usar en el layout de la descripción
     //Ids del layout de fragment_usuario
     private EditText mEditTextUsuarioPerfilUsuario, mEditTextNombrePerfilUsuario, mEditTextApellidoPerfilUsuario, mEditTextDireccionPerfilUsuario, mEditTextEmailPerfilUsuario, mEditTextContrasenaPerfilUsuario;  //EditText de todos los campos del producto
+
+    public PerfilUsuarioFragment(Context context) {
+        mContext = context;
+    }
     //private LikeButton mConfirmar_cambios_boton__usuario_frag;   //Boton de like que hace una animación cuando se presiona ---- Cual??
     //private ImageView mImagenPerfilUsuario;      //Imagen
 

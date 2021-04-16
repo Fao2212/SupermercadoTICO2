@@ -41,8 +41,8 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
 
     private Productos infodummyparaprobar;
     //Provisional
-    private String userName = "User1";
-    private String userPassWord = "password";
+    private String userName = "Alex01";
+    private String userPassWord = "1234";
     private String adminId = "123";
     private String adminPassWord = "password";
 
@@ -276,14 +276,14 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
     }
 
     private boolean validateUserData(String user,String password){
-        checkDatabase(user,password);
-        return true;
+
+        return checkDatabase(user,password);
     }
 
     private boolean validateAdminData(){
 
-        checkDatabase("1","1");
-        return true;
+
+        return checkDatabase("1","1");
     }
 
     private boolean checkDatabase(String username,String password) {

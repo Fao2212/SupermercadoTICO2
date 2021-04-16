@@ -10,9 +10,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-public class BDHelper extends SQLiteOpenHelper {
+public class BDHelper /*extends SQLiteOpenHelper */{
 
-    private static final String DATABASE_NAME = "supermercadosTico.db";
+  /*  private static final String DATABASE_NAME = "supermercadosTico.db";
     private static final int DATABASE_VERSION = 1;
     private final Context context;
     SQLiteDatabase db;
@@ -107,6 +107,6 @@ public class BDHelper extends SQLiteOpenHelper {
         close();
 
         return count > 0;
-    }
+    }*/
 
 }
