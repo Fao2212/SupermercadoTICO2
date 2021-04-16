@@ -46,16 +46,11 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
         mBarraNavegacion = findViewById(R.id.navbar_inferior_view_cliente); //Barra de navegacion
         mBarraNavegacion.setOnNavigationItemSelectedListener(this);
 
-//        //Inicializa el Fragment de Busqueda del Cliente
-//        initBarraNavegacion();
-//
-//        //initFragmento_Productos();
-//        initFragmento_Facturas();
+        //Inicializa el Fragment de Busqueda del Cliente
+        initBarraNavegacion();
+
+        initFragmento_Productos();
         infodummyparaprobar = new Productos();
-
-        //Init fragmento_Perfil
-        initFragmento_Perfil();
-
 
     }
 
@@ -70,11 +65,13 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
         switch(item.getItemId()){
             case R.id.facturas_nav_cliente:{
                 Log.d(TAG, "onNavigationItemSelected: Faturas");
+                initFragmento_Facturas();
                 item.setChecked(true);
                 break;
             }
             case R.id.busqueda_nav_cliente:{
                 Log.d(TAG, "onNavigationItemSelected: Busqueda");
+                initFragmento_Productos();
                 item.setChecked(true);
                 break;
             }
@@ -85,6 +82,7 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
             }
             case R.id.perfil_nav_cliente:{
                 Log.d(TAG, "onNavigationItemSelected: Perfil");
+                initFragmento_Perfil();
                 item.setChecked(true);
                 break;
             }
