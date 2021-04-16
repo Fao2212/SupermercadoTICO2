@@ -1,4 +1,4 @@
-package com.example.supermercadotico.FragmentsCliente;
+package com.example.supermercadotico.FragmentsAdministrador;
 
 import android.content.Context;
 import android.os.Bundle;
