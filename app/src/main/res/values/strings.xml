@@ -10,6 +10,12 @@
     <string name="tag_user_fragment_descripcion_producto">usr_Descripcion</string>
     <string name="tag_user_fragment_lista_productos">usr_Productos</string>
     <string name="tag_user_fragment_login">usr_login</string>
+    <string name="tag_user_fragment_sucursal">usr_sucursals</string>
+    <string name="tag_user_fragment_registrar">usr_sucursals</string>
+
+
+    <string name="tag_admin_fragment_perfil">adm_perfil</string>
+    <string name="tag_admin_fragment_registrar">adm_registrar</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

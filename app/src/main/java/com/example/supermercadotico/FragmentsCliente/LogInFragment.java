@@ -48,6 +48,12 @@ public class LogInFragment  extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_login_client,container,false);
+        setButtons(view);
+        return view;
+    }
+
+    private void setButtons(View view)
+    {
         botonEntrar = view.findViewById(R.id.botonEntrarInicio);
         botonRegistrarse = view.findViewById(R.id.botonRegistrarseInicio);
         botonAdministrador = view.findViewById(R.id.botonAdministradorInicio);
@@ -55,14 +61,22 @@ public class LogInFragment  extends Fragment {
         botonEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mInterface.initUserView();
+                mInterface.initSucursalView();
             }
         });
-        return view;
-    }
 
-    private void setButton()
-    {
+        botonAdministrador.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mInterface.initAdminView();
+            }
+        });
 
+        botonRegistrarse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mInterface.initRegisterView();
+            }
+        });
     }
 }
