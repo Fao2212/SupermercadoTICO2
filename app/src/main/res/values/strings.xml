@@ -4,11 +4,12 @@
     <!-- Nombres de los Fragmentos del ClienteOComprador -->
     <string name="tag_user_fragment_busqueda">usr_Busqueda</string>
     <string name="tag_user_fragment_carrito_compras">usr_Carrito</string>
-    <string name="tag_user_fragmen_facturas_anteriores">usr_Facturas</string>
+    <string name="tag_user_fragment_facturas_anteriores">usr_Facturas</string>
+    <string name="tag_user_fragment_descripcion_facturas_anteriores">usr_Facturas</string>
     <string name="tag_user_fragment_perfil">usr_Perfil</string>
     <string name="tag_user_fragment_descripcion_producto">usr_Descripcion</string>
     <string name="tag_user_fragment_lista_productos">usr_Productos</string>
-
+    <string name="tag_user_fragment_login">usr_login</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -21,6 +22,19 @@
 
     <!-- Intent y bundle Extras -->
     <string name="intent_producto">intent_producto</string>
+    <string name="intent_factura">intent_factura</string>
+    <string name="intent_perfil_cliente">intent_perfil_cliente</string>
+
+
+
+    <string name="id_laboral">Id Laboral:</string>
+    <string name="confirmar_cambios">Confirmar Cambios</string>
+    <string name="apellido">Apellido:</string>
+    <string name="cedula">Cedula:</string>
+    <string name="puesto">Puesto:</string>
+    <string name="nombre">Nombre:</string>
+    <string name="funciones">Funciones:</string>
+    <string name="todo">todo</string>
 
 
 </resources>

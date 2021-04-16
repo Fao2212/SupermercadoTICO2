@@ -3,17 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentsCliente.ProductosFragment">
+    tools:context=".FragmentsCliente.FacturasFragment">
 
     <!--
-     ID recyclerView de productos: productos_recyclerView
-     -->
+        ID recyclerView de facturas: facturas_recyclerView
+    -->
+    <!-- TODO: Update blank fragment layout -->
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/productos_recyclerView"
+        android:id="@+id/facturas_recyclerView"
         android:orientation="vertical">
 
     </androidx.recyclerview.widget.RecyclerView>
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Hola desde el Fragmento de Facturas" />
 </RelativeLayout>
