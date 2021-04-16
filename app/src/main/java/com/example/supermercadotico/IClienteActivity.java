@@ -26,5 +26,6 @@ public interface IClienteActivity {
     Cliente getCliente();
 
     ArrayList<Factura> getListaFacturasAnteriores();
+    void initUserView();
 
 }

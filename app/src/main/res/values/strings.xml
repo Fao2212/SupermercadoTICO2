@@ -9,6 +9,7 @@
     <string name="tag_user_fragment_perfil">usr_Perfil</string>
     <string name="tag_user_fragment_descripcion_producto">usr_Descripcion</string>
     <string name="tag_user_fragment_lista_productos">usr_Productos</string>
+    <string name="tag_user_fragment_login">usr_login</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -26,6 +27,14 @@
 
 
 
+    <string name="id_laboral">Id Laboral:</string>
+    <string name="confirmar_cambios">Confirmar Cambios</string>
+    <string name="apellido">Apellido:</string>
+    <string name="cedula">Cedula:</string>
+    <string name="puesto">Puesto:</string>
+    <string name="nombre">Nombre:</string>
+    <string name="funciones">Funciones:</string>
+    <string name="todo">todo</string>
 
 
 </resources>

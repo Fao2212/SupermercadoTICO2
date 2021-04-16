@@ -15,6 +15,7 @@ import com.example.supermercadotico.FragmentsCliente.ProductoDescripcionFragment
 import com.example.supermercadotico.FragmentsCliente.ProductosFragment;
 import com.example.supermercadotico.Models.Cliente;
 import com.example.supermercadotico.Models.Factura;
+import com.example.supermercadotico.Fragments.LogInFragment;
 import com.example.supermercadotico.Models.Producto;
 import com.example.supermercadotico.Utils.Productos;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -45,12 +46,9 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
         Log.d(TAG, "onCreate: Crear Cliente Activity");
         mBarraNavegacion = findViewById(R.id.navbar_inferior_view_cliente); //Barra de navegacion
         mBarraNavegacion.setOnNavigationItemSelectedListener(this);
-
-        //Inicializa el Fragment de Busqueda del Cliente
-        initBarraNavegacion();
-
-        initFragmento_Productos();
         infodummyparaprobar = new Productos();
+
+        initFragmentoLogIn();
 
     }
 
@@ -134,6 +132,16 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
         transaction.commit();
     }
 
+    private void initFragmentoLogIn()
+    {
+        LogInFragment logInFragment  = new LogInFragment(this);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.cliente_content_frame, logInFragment, getString(R.string.tag_user_fragment_login));
+        transaction.addToBackStack(getString(R.string.tag_user_fragment_login));
+        transaction.commit();
+    }
+
+
 
     //Ya le llego el producto que el usuario seleccionó, y ahora lo va a cargar en la descripción
     public void inflateDescripcion_Producto_Fragment(Producto pProducto) {
@@ -182,6 +190,13 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
     public ArrayList<Factura> getListaFacturasAnteriores() {
         Log.d(TAG, "getListaFacturasAnteriores: mandando lista de fcaturas");
         return null;
+    }
+    //Usado para accesar desde otro fragmento a los metodos de esta clase
+    @Override
+    public void initUserView() {
+        //Inicializa el Fragment de Busqueda del Cliente
+        initBarraNavegacion();
+        initFragmento_Productos();
     }
 
 
