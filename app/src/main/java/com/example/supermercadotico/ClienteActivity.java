@@ -17,6 +17,7 @@ import com.example.supermercadotico.FragmentsCliente.ProductosFragment;
 import com.example.supermercadotico.FragmentsAdministrador.RegistrarAdministradorFragment;
 import com.example.supermercadotico.FragmentsCliente.RegistrarUsuarioFragment;
 import com.example.supermercadotico.FragmentsCliente.SucursalFragment;
+import com.example.supermercadotico.Models.Categoria;
 import com.example.supermercadotico.Models.Cliente;
 import com.example.supermercadotico.Models.Factura;
 import com.example.supermercadotico.FragmentsCliente.LogInFragment;
@@ -231,10 +232,17 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
         transaction.commit();
     }
 
+
+    //le envia una lista de produuctos al fragment
     @Override
-    public ArrayList<Producto> getListaProductos() {
-        Log.d(TAG, "getListaProductos: mandadnolista de productos");
-        return null;
+    public ArrayList<Producto> getListaProductos_deCategoria(String pIDCategoria) {
+        ArrayList<Producto> listaProductos = new ArrayList<Producto>();
+
+        for (Producto producto : infodummyparaprobar.PRODUCTOS){
+            listaProductos.add(producto);
+        }
+
+        return listaProductos;
     }
 
     @Override
@@ -292,5 +300,20 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
     private boolean checkDatabase(String username,String password) {
         return username.equals(userName) && password.equals(userPassWord);
     }
+
+
+    //Le manda un array de catgeorias al fragment de categorias
+    @Override
+    public ArrayList<Categoria> inflateCategorias_Busqueda_Fragment() {
+        ArrayList<Categoria>  categorias = new ArrayList<Categoria>();
+
+        for (Categoria categoria : infodummyparaprobar.CATEGORIAS){
+            categorias.add(categoria);
+        }
+
+        return categorias;
+    }
+
+
 
 }

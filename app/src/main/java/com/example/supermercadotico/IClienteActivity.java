@@ -1,6 +1,7 @@
 package com.example.supermercadotico;
 
 
+import com.example.supermercadotico.Models.Categoria;
 import com.example.supermercadotico.Models.Cliente;
 import com.example.supermercadotico.Models.Factura;
 import com.example.supermercadotico.Models.Producto;
@@ -21,7 +22,10 @@ public interface IClienteActivity {
     //Va a pasar por el activity y el activity va a iniciar la descripción de la factura
     void inflateDescripcion_Factura_Fragment(Factura pFactura);
 
-    ArrayList<Producto> getListaProductos();
+    ArrayList<Categoria> inflateCategorias_Busqueda_Fragment();
+
+    //Envia a los productos una lista de categoria
+    ArrayList<Producto> getListaProductos_deCategoria(String pIDCategoria);
 
     Cliente getCliente();
 

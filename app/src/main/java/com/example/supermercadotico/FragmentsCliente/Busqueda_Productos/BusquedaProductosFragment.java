@@ -1,4 +1,4 @@
-package com.example.supermercadotico.FragmentsCliente;
+package com.example.supermercadotico.FragmentsCliente.Busqueda_Productos;
 
 import android.os.Bundle;
 
@@ -14,18 +14,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.supermercadotico.FragmentsCliente.FacturasRecyclerViewAdapter;
+import com.example.supermercadotico.IClienteActivity;
+import com.example.supermercadotico.Models.Categoria;
 import com.example.supermercadotico.Models.Factura;
-import com.example.supermercadotico.Models.Producto;
 import com.example.supermercadotico.R;
 import com.example.supermercadotico.Utils.Productos;
 
 import java.util.ArrayList;
 
 
-public class FacturasFragment extends Fragment {
+public class BusquedaProductosFragment extends Fragment {
 
     //Tag para reconocer la clase
-    private static final String TAG = "Facturas Fragment";                      //< todo: Cambiar al Tag del Fragment > !!!
+    private static final String TAG = "BusquedProductosFragmen";                      //< todo: Cambiar al Tag del Fragment > !!!
 
     //Numero de columnas del fview
     private static final int NUM_COLUMNAS = 1;
@@ -35,34 +37,31 @@ public class FacturasFragment extends Fragment {
 
     //Variables
     private StaggeredGridLayoutManager mStaggeredGridLayoutManager;
-    private FacturasRecyclerViewAdapter mRecyclerViewAdapter;               //< todo:Cambiar al Recycler View correspondiente > !!!
-    private ArrayList<Factura> mListaFacturas = new ArrayList<>();        //< todo:Cambiar a la lista del objeto correspondiente > !!!
+    private BusquedaProductosRecyclerViewAdapter mRecyclerViewAdapter;               //< todo:Cambiar al Recycler View correspondiente > !!!
+    private ArrayList<Categoria> mListaCategorias = new ArrayList<>();        //< todo:Cambiar a la lista del objeto correspondiente > !!!
+    private IClienteActivity interfazClienteActivity;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_facturas,container, false); //< todo:Cambiar al layout correspondiente > !!!
+        View view = inflater.inflate(R.layout.fragment_busqueda_productos,container, false); //< todo:Cambiar al layout correspondiente > !!!
         Log.d(TAG, "onCreateView: Iniciado");
 
         //Carga el recycler view
-        mRecyclerView = view.findViewById(R.id.facturas_recyclerView);                         //< todo:Cambiar al recycler view correspondiente > !!!
+        mRecyclerView = view.findViewById(R.id.recyclerView_busqueda_producto);                         //< todo:Cambiar al recycler view correspondiente > !!!
 
         //Carga las facturas a la lista
-        findFacturas();
+        interfazClienteActivity = (IClienteActivity) getActivity();
+        findCategerias();
         return view;
     }
 
-    private void findFacturas(){
+    private void findCategerias(){
         //Acá le caen todos los datos de facturas
         Productos productos = new Productos();                              //Está utilizando los datos del paquete UTIL para cargar datos dummy
-                                                                            //todo:Aca se tiene que comunicar con la interfaz del activity para que le devuelva la lista de facturas
-        for (Factura factura : productos.FACTURAS){
-            mListaFacturas.add(factura);
-        }
-
+         mListaCategorias = interfazClienteActivity.inflateCategorias_Busqueda_Fragment();
         //Inicia el recycler view
         initRecyclerView();
-
     }
 
     //Crea las tarjetas
@@ -72,7 +71,7 @@ public class FacturasFragment extends Fragment {
         mRecyclerView.setLayoutManager(mStaggeredGridLayoutManager);
 
         //Se agregan los datos al adapterView
-        mRecyclerViewAdapter = new FacturasRecyclerViewAdapter(mListaFacturas, getActivity());   //todo: agrega la lista correspondiente  y cambiar el objeto al recycler corresponidentea lo que pide el recyclerView correspondiente
+        mRecyclerViewAdapter = new BusquedaProductosRecyclerViewAdapter(mListaCategorias, getActivity());   //todo: agrega la lista correspondiente  y cambiar el objeto al recycler corresponidentea lo que pide el recyclerView correspondiente
         mRecyclerView.setAdapter(mRecyclerViewAdapter);
     }
 }

@@ -43,6 +43,7 @@ public class ProductosFragment extends Fragment {
     private ProductosRecyclerViewAdapter mRecyclerViewAdapter;
     private ArrayList<Producto> mListaProductos = new ArrayList<>();
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
