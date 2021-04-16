@@ -17,6 +17,7 @@ import com.example.supermercadotico.Fragments.RegistrarAdministradorFragment;
 import com.example.supermercadotico.Fragments.RegistrarUsuarioFragment;
 import com.example.supermercadotico.Fragments.SucursalFragment;
 import com.example.supermercadotico.Models.Producto;
+import com.example.supermercadotico.Users.Usuario;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
@@ -29,9 +30,16 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
      //El tag de cada activity y fragmento esta en res/values/strings.xml
     private static final String TAG = "ClienteActivity";
 
+    //Provisional
+    private String userName = "User1";
+    private String userPassWord = "password";
+    private String adminId = "123";
+    private String adminPassWord = "password";
+
     //widgets
     //Barra de navegación
     private BottomNavigationViewEx mBarraNavegacion;
+    private Controlador controlador;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +48,13 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
         Log.d(TAG, "onCreate: Crear Cliente Activity");
         mBarraNavegacion = findViewById(R.id.navbar_inferior_view_cliente); //Barra de navegacion
         mBarraNavegacion.setOnNavigationItemSelectedListener(this);
-
-
+        iniciarControlador();
         initFragmentoLogIn();
 
+    }
+
+    private void iniciarControlador() {
+        controlador = new Controlador();
     }
 
     private void initBarraNavegacion(){
@@ -108,8 +119,8 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
     {
         SucursalFragment sucursalFragment  = new SucursalFragment(this);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.cliente_content_frame, sucursalFragment, getString(R.string.tag_user_sucursal));
-        transaction.addToBackStack(getString(R.string.tag_user_sucursal));
+        transaction.replace(R.id.cliente_content_frame, sucursalFragment, getString(R.string.tag_user_fragment_sucursal));
+        transaction.addToBackStack(getString(R.string.tag_user_fragment_sucursal));
         transaction.commit();
     }
 
@@ -126,8 +137,8 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
     {
         PerfilAdministradorFragment perfilAdministradorFragment  = new PerfilAdministradorFragment(this);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.cliente_content_frame, perfilAdministradorFragment, getString(R.string.tag_user_fragment_perfil));
-        transaction.addToBackStack(getString(R.string.tag_user_fragment_perfil));
+        transaction.replace(R.id.cliente_content_frame, perfilAdministradorFragment, getString(R.string.tag_admin_fragment_perfil));
+        transaction.addToBackStack(getString(R.string.tag_admin_fragment_perfil));
         transaction.commit();
     }
 
@@ -135,8 +146,8 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
     {
         RegistrarUsuarioFragment registrarUsuarioFragment  = new RegistrarUsuarioFragment(this);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.cliente_content_frame, registrarUsuarioFragment, getString(R.string.tag_user_fragment_perfil));
-        transaction.addToBackStack(getString(R.string.tag_user_fragment_perfil));
+        transaction.replace(R.id.cliente_content_frame, registrarUsuarioFragment, getString(R.string.tag_user_fragment_registrar));
+        transaction.addToBackStack(getString(R.string.tag_user_fragment_registrar));
         transaction.commit();
     }
 
@@ -144,8 +155,8 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
     {
         RegistrarAdministradorFragment registrarAdministradorFragment  = new RegistrarAdministradorFragment(this);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.cliente_content_frame, registrarAdministradorFragment, getString(R.string.tag_user_fragment_perfil));
-        transaction.addToBackStack(getString(R.string.tag_user_fragment_perfil));
+        transaction.replace(R.id.cliente_content_frame, registrarAdministradorFragment, getString(R.string.tag_admin_fragment_registrar));
+        transaction.addToBackStack(getString(R.string.tag_admin_fragment_registrar));
         transaction.commit();
     }
 
@@ -176,6 +187,16 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
     @Override
     public void initSucursalView() {
         initFragmentoSeleccionDeSucursal();
+    }
+
+    @Override
+    public void initAdminView() {
+
+    }
+
+    @Override
+    public void initRegisterView() {
+        initFragmentoRegistrarUsuario();
     }
 
 

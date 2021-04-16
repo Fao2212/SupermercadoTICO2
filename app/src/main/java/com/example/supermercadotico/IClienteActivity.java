@@ -13,5 +13,7 @@ public interface IClienteActivity {
     void inflateDescripcionProductoFragment(Producto pProducto);
     void initUserView();
     void initSucursalView();
+    void initAdminView();
 
+    void initRegisterView();
 }
