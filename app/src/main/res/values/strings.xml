@@ -9,6 +9,7 @@
     <string name="tag_user_fragment_descripcion_producto">usr_Descripcion</string>
     <string name="tag_user_fragment_lista_productos">usr_Productos</string>
     <string name="tag_user_fragment_login">usr_login</string>
+    <string name="tag_user_sucursal">usr_sucursals</string>
 
 
 

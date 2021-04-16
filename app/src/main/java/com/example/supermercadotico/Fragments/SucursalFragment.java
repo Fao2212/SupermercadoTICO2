@@ -7,31 +7,36 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.supermercadotico.ClienteActivity;
 import com.example.supermercadotico.IClienteActivity;
+import com.example.supermercadotico.Models.Producto;
 import com.example.supermercadotico.R;
+import com.example.supermercadotico.Sucursal;
 
-public class LogInFragment  extends Fragment {
+import java.util.ArrayList;
 
-    private static final String TAG = "LogInFrag";
+public class SucursalFragment extends Fragment {
 
-    private IClienteActivity mInterface;
+    private String TAG = "SeleccionarSucursal";
 
     private Context mContext;
 
-    private EditText userEditText,passwordEditText;//TODO: Para el boton del ojo se puede tener un input text por debajo y cuando se presiona el boton entonces se hace un cambio
+    private ArrayList<Sucursal> sucursales;
 
-    private Button botonEntrar,botonRegistrarse,botonAdministrador;
+    private IClienteActivity mInterface;
 
-    public LogInFragment(Context mContext) {
-        this.mContext = mContext;
+    private Button botonConfirmar;
+
+    private Spinner spinnerProvincias;
+
+    public SucursalFragment(Context pContext) {
+        mContext = pContext;
     }
 
     @Override
@@ -47,22 +52,26 @@ public class LogInFragment  extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_login_client,container,false);
-        botonEntrar = view.findViewById(R.id.botonEntrarInicio);
-        botonRegistrarse = view.findViewById(R.id.botonRegistrarseInicio);
-        botonAdministrador = view.findViewById(R.id.botonAdministradorInicio);
-
-        botonEntrar.setOnClickListener(new View.OnClickListener() {
+        View view = inflater.inflate(R.layout.fragment_seleccion_sucursal,container,false);
+        botonConfirmar = view.findViewById(R.id.botonConfirmarSeleccionSucursal);
+        botonConfirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mInterface.initSucursalView();
+                mInterface.initUserView();
             }
         });
+        setProvincias();
         return view;
     }
 
-    private void setButton()
+    public void setBotones(View view)
     {
 
     }
+
+    public void setProvincias()
+    {
+
+    }
+
 }

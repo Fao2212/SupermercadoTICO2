@@ -10,7 +10,12 @@ import android.view.MenuItem;
 
 import com.example.supermercadotico.Fragments.DescripcionProductoFragment;
 import com.example.supermercadotico.Fragments.LogInFragment;
+import com.example.supermercadotico.Fragments.PerfilAdministradorFragment;
+import com.example.supermercadotico.Fragments.PerfilUsuarioFragment;
 import com.example.supermercadotico.Fragments.ProductosFragment;
+import com.example.supermercadotico.Fragments.RegistrarAdministradorFragment;
+import com.example.supermercadotico.Fragments.RegistrarUsuarioFragment;
+import com.example.supermercadotico.Fragments.SucursalFragment;
 import com.example.supermercadotico.Models.Producto;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
@@ -99,7 +104,50 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
         transaction.commit();
     }
 
+    private void initFragmentoSeleccionDeSucursal()
+    {
+        SucursalFragment sucursalFragment  = new SucursalFragment(this);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.cliente_content_frame, sucursalFragment, getString(R.string.tag_user_sucursal));
+        transaction.addToBackStack(getString(R.string.tag_user_sucursal));
+        transaction.commit();
+    }
 
+    private void initFragmentoPerfilUsuario()
+    {
+        PerfilUsuarioFragment perfilUsuarioFragment  = new PerfilUsuarioFragment(this);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.cliente_content_frame, perfilUsuarioFragment, getString(R.string.tag_user_fragment_perfil));
+        transaction.addToBackStack(getString(R.string.tag_user_fragment_perfil));
+        transaction.commit();
+    }
+
+    private void initFragmentoPerfilAdministrador()
+    {
+        PerfilAdministradorFragment perfilAdministradorFragment  = new PerfilAdministradorFragment(this);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.cliente_content_frame, perfilAdministradorFragment, getString(R.string.tag_user_fragment_perfil));
+        transaction.addToBackStack(getString(R.string.tag_user_fragment_perfil));
+        transaction.commit();
+    }
+
+    private void initFragmentoRegistrarUsuario()
+    {
+        RegistrarUsuarioFragment registrarUsuarioFragment  = new RegistrarUsuarioFragment(this);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.cliente_content_frame, registrarUsuarioFragment, getString(R.string.tag_user_fragment_perfil));
+        transaction.addToBackStack(getString(R.string.tag_user_fragment_perfil));
+        transaction.commit();
+    }
+
+    private void initFragmentoRegistarAdministrador()
+    {
+        RegistrarAdministradorFragment registrarAdministradorFragment  = new RegistrarAdministradorFragment(this);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.cliente_content_frame, registrarAdministradorFragment, getString(R.string.tag_user_fragment_perfil));
+        transaction.addToBackStack(getString(R.string.tag_user_fragment_perfil));
+        transaction.commit();
+    }
 
     //Ya le llego el producto que el usuario seleccionó, y ahora lo va a cargar en la descripción
     @Override
@@ -123,6 +171,11 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
         //Inicializa el Fragment de Busqueda del Cliente
         initBarraNavegacion();
         initFragmentoProductos();
+    }
+
+    @Override
+    public void initSucursalView() {
+        initFragmentoSeleccionDeSucursal();
     }
 
 

@@ -12,5 +12,6 @@ public interface IClienteActivity {
     //Va a pasar por el activity y el activity va a iniciar la descripción del producto
     void inflateDescripcionProductoFragment(Producto pProducto);
     void initUserView();
+    void initSucursalView();
 
 }
