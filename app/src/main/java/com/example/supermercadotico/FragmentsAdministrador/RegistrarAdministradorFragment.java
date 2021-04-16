@@ -1,4 +1,4 @@
-package com.example.supermercadotico.FragmentsCliente;
+package com.example.supermercadotico.FragmentsAdministrador;
 
 import androidx.fragment.app.Fragment;
 

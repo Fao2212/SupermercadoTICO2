@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/facturasdetodos_nav_administrador"
+        android:icon="@drawable/file_exclamation_alt_green"
+        android:layout_centerVertical="true"
+        android:title=""
+        ></item>
+    <item
+        android:id="@+id/empleados_nav_administrador"
+        android:icon="@drawable/constructor_green"
+        android:layout_centerVertical="true"
+        android:title=""
+        ></item>
+    <item
+        android:id="@+id/productos_nav_administrador"
+        android:icon="@drawable/store_green"
+        android:layout_centerVertical="true"
+        android:title=""
+
+        ></item>
+    <item
+        android:id="@+id/perfil_nav_administrador"
+        android:icon="@drawable/users_alt_green"
+        android:layout_centerVertical="true"
+        android:title=""
+        ></item>
+    <item
+        android:id="@+id/cerarsesion_nav_administrador"
+        android:icon="@mipmap/ic_launcher"
+        android:layout_centerVertical="true"
+        android:title=""
+        ></item>
+</menu>

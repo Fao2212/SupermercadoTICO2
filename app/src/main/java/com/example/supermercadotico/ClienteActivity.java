@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -11,10 +12,9 @@ import com.example.supermercadotico.FragmentsCliente.FacturaDescripcionFragment;
 import com.example.supermercadotico.FragmentsCliente.FacturasFragment;
 import com.example.supermercadotico.FragmentsCliente.PerfilAdministradorFragment;
 import com.example.supermercadotico.FragmentsCliente.PerfilClienteFragment;
-import com.example.supermercadotico.FragmentsCliente.PerfilUsuarioFragment;
 import com.example.supermercadotico.FragmentsCliente.ProductoDescripcionFragment;
 import com.example.supermercadotico.FragmentsCliente.ProductosFragment;
-import com.example.supermercadotico.FragmentsCliente.RegistrarAdministradorFragment;
+import com.example.supermercadotico.FragmentsAdministrador.RegistrarAdministradorFragment;
 import com.example.supermercadotico.FragmentsCliente.RegistrarUsuarioFragment;
 import com.example.supermercadotico.FragmentsCliente.SucursalFragment;
 import com.example.supermercadotico.Models.Cliente;
@@ -165,14 +165,14 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
         transaction.commit();
     }
 
-    private void initFragmentoPerfilUsuario()
-    {
-        PerfilUsuarioFragment perfilUsuarioFragment  = new PerfilUsuarioFragment(this);
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.cliente_content_frame, perfilUsuarioFragment, getString(R.string.tag_user_fragment_perfil));
-        transaction.addToBackStack(getString(R.string.tag_user_fragment_perfil));
-        transaction.commit();
-    }
+//    private void initFragmentoPerfilUsuario()
+//    {
+//        PerfilUsuarioFragment perfilUsuarioFragment  = new PerfilUsuarioFragment(this);
+//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//        transaction.replace(R.id.cliente_content_frame, perfilUsuarioFragment, getString(R.string.tag_user_fragment_perfil));
+//        transaction.addToBackStack(getString(R.string.tag_user_fragment_perfil));
+//        transaction.commit();
+//    }
 
     private void initFragmentoPerfilAdministrador()
     {
@@ -267,7 +267,11 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
 
     @Override
     public void initAdminView() {
+        Log.d(TAG, "initAdminView: Iniciando Vista de Administrador");
         validateAdminData();
+        Intent intent = new Intent(ClienteActivity.this, AdministradorActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     @Override
@@ -281,7 +285,6 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
     }
 
     private boolean validateAdminData(){
-
 
         return checkDatabase("1","1");
     }
