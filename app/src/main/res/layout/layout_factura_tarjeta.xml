@@ -6,19 +6,17 @@
 
 
     <!--
-        ID CardView = card_view
-        ID Imagen Producto: imagenProducto
-        ID textView nombre producto: nombreProducto
-        ID TextView precio: precioProducto
-
--->
+        ID CardView = factura_tarjeta
+        ID Numero Factura: id_numerofactura_tarjeta
+        ID Fecha Fcatura: fechafactura_factura_tarjeta
+        -->
     <androidx.cardview.widget.CardView
-        android:id="@+id/card_view"
+        android:id="@+id/factura_tarjeta_card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         app:cardBackgroundColor="#219653"
-        app:cardCornerRadius="4dp"
+        app:cardCornerRadius="30dp"
         app:cardElevation="1dp"
         app:cardMaxElevation="2dp">
 
@@ -28,37 +26,31 @@
             android:layout_height="match_parent"
             android:padding="5dp">
 
-            <ImageView
-                android:id="@+id/imagenProducto"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/imagenproducto"
-                android:scaleType="center"
-                app:srcCompat="@mipmap/ic_launcher" />
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/imagenProducto"
                 android:padding="5dp">
 
 
                 <TextView
-                    android:id="@+id/nombreProducto"
+                    android:id="@+id/id_numerofactura_tarjeta"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="@string/nombre_producto"
+                    android:text="Factura: NO.9999"
+                    android:textSize="20dp"
                     android:textColor="#fff" />
 
 
                 <TextView
-                    android:id="@+id/precioProducto"
+                    android:id="@+id/fechafactura_factura_tarjeta"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/nombreProducto"
-                    android:layout_marginTop="4dp"
-                    android:text="@string/precio_producto"
+                    android:layout_below="@id/id_numerofactura_tarjeta"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="20dp"
+                    android:text="Fecha:20/01/2021"
                     android:textColor="#fff" />
             </RelativeLayout>
         </RelativeLayout>

@@ -1,10 +1,6 @@
-package com.example.supermercadotico.Fragments;
+package com.example.supermercadotico.FragmentsCliente;
 
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
 import com.example.supermercadotico.Models.Producto;
@@ -24,7 +23,7 @@ import com.like.OnLikeListener;
  * Implementa OnLikeListener, para el botón de agregar al carrito.
  * El fragmento de Productos, le pasa un objeto producto a este view para cargarlo en pantalla
  */
-public class DescripcionProductoFragment extends Fragment implements OnLikeListener {
+public class ProductoDescripcionFragment extends Fragment implements OnLikeListener {
     //Tag para los logs y saber de donde se están haciendo
     private static final String TAG = "DescripcionProductoFrag";
 
