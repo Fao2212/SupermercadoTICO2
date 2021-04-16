@@ -27,6 +27,12 @@
         android:title=""
         ></item>
     <item
+        android:id="@+id/agregar_nav_administrador"
+        android:icon="@drawable/store_green"
+        android:layout_centerVertical="true"
+        android:title=""
+        ></item>
+    <item
         android:id="@+id/cerarsesion_nav_administrador"
         android:icon="@mipmap/ic_launcher"
         android:layout_centerVertical="true"

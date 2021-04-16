@@ -2,9 +2,9 @@ package com.example.supermercadotico.FragmentsAdministrador;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.supermercadotico.ClienteActivity;
+import com.example.supermercadotico.AdministradorActivity;
 
 public class RegistrarAdministradorFragment extends Fragment {
-    public RegistrarAdministradorFragment(ClienteActivity clienteActivity) {
+    public RegistrarAdministradorFragment(AdministradorActivity adminActivity) {
     }
 }

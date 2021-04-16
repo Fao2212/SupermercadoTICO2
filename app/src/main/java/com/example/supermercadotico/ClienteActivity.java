@@ -10,11 +10,9 @@ import android.util.Log;
 import android.view.MenuItem;
 import com.example.supermercadotico.FragmentsCliente.FacturaDescripcionFragment;
 import com.example.supermercadotico.FragmentsCliente.FacturasFragment;
-import com.example.supermercadotico.FragmentsCliente.PerfilAdministradorFragment;
 import com.example.supermercadotico.FragmentsCliente.PerfilClienteFragment;
 import com.example.supermercadotico.FragmentsCliente.ProductoDescripcionFragment;
 import com.example.supermercadotico.FragmentsCliente.ProductosFragment;
-import com.example.supermercadotico.FragmentsAdministrador.RegistrarAdministradorFragment;
 import com.example.supermercadotico.FragmentsCliente.RegistrarUsuarioFragment;
 import com.example.supermercadotico.FragmentsCliente.SucursalFragment;
 import com.example.supermercadotico.Models.Cliente;
@@ -35,7 +33,7 @@ import java.util.ArrayList;
 public class ClienteActivity extends AppCompatActivity implements IClienteActivity, BottomNavigationView.OnNavigationItemSelectedListener{
 
 
-     //El tag de cada activity y fragmento esta en res/values/strings.xml
+    //El tag de cada activity y fragmento esta en res/values/strings.xml
     private static final String TAG = "ClienteActivity";
 
 
@@ -165,39 +163,12 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
         transaction.commit();
     }
 
-//    private void initFragmentoPerfilUsuario()
-//    {
-//        PerfilUsuarioFragment perfilUsuarioFragment  = new PerfilUsuarioFragment(this);
-//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//        transaction.replace(R.id.cliente_content_frame, perfilUsuarioFragment, getString(R.string.tag_user_fragment_perfil));
-//        transaction.addToBackStack(getString(R.string.tag_user_fragment_perfil));
-//        transaction.commit();
-//    }
-
-    private void initFragmentoPerfilAdministrador()
-    {
-        PerfilAdministradorFragment perfilAdministradorFragment  = new PerfilAdministradorFragment(this);
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.cliente_content_frame, perfilAdministradorFragment, getString(R.string.tag_admin_fragment_perfil));
-        transaction.addToBackStack(getString(R.string.tag_admin_fragment_perfil));
-        transaction.commit();
-    }
-
     private void initFragmentoRegistrarUsuario()
     {
         RegistrarUsuarioFragment registrarUsuarioFragment  = new RegistrarUsuarioFragment(this);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.cliente_content_frame, registrarUsuarioFragment, getString(R.string.tag_user_fragment_registrar));
         transaction.addToBackStack(getString(R.string.tag_user_fragment_registrar));
-        transaction.commit();
-    }
-
-    private void initFragmentoRegistarAdministrador()
-    {
-        RegistrarAdministradorFragment registrarAdministradorFragment  = new RegistrarAdministradorFragment(this);
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.cliente_content_frame, registrarAdministradorFragment, getString(R.string.tag_admin_fragment_registrar));
-        transaction.addToBackStack(getString(R.string.tag_admin_fragment_registrar));
         transaction.commit();
     }
 
@@ -254,8 +225,8 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
     public void initUserView() {
         //Inicializa el Fragment de Busqueda del Cliente
 
-            initBarraNavegacion();
-            initFragmento_Productos();
+        initBarraNavegacion();
+        initFragmento_Productos();
     }
 
     @Override

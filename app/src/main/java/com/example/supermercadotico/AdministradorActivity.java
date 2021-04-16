@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 
+import com.example.supermercadotico.FragmentsAdministrador.PerfilAdministradorFragment;
 import com.example.supermercadotico.FragmentsAdministrador.PerfilUsuarioFragment;
+import com.example.supermercadotico.FragmentsAdministrador.RegistrarAdministradorFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
@@ -55,6 +57,12 @@ public class AdministradorActivity extends AppCompatActivity implements BottomNa
                 item.setChecked(true);
                 break;
             }
+            case R.id.agregar_nav_administrador:{
+                Log.d(TAG, "onNavigationItemSelected: Registrar");
+                initFragmentoRegistarAdministrador();
+                item.setChecked(true);
+                break;
+            }
             case R.id.cerarsesion_nav_administrador:{
                 Log.d(TAG, "onNavigationItemSelected: CerrarSesion");
                 cerrarSesion_Administrador();
@@ -66,9 +74,32 @@ public class AdministradorActivity extends AppCompatActivity implements BottomNa
     }
 
     //Inicia el fragmento de perfil del administrador
-    private void initFragmento_Perfil_Administrador(){
-        Log.d(TAG, "initFragmento_Perfil_Administrador: Iniciando fragmento perfil admin");
+    private void initFragmento_Perfil_Administrador()
+    {
+        PerfilAdministradorFragment perfilAdministradorFragment  = new PerfilAdministradorFragment(this);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.aministrador_content_frame, perfilAdministradorFragment, getString(R.string.tag_admin_fragment_perfil));
+        transaction.addToBackStack(getString(R.string.tag_admin_fragment_perfil));
+        transaction.commit();
     }
+
+    private void initFragmentoRegistarAdministrador()
+    {
+        RegistrarAdministradorFragment registrarAdministradorFragment  = new RegistrarAdministradorFragment(this);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.aministrador_content_frame, registrarAdministradorFragment, getString(R.string.tag_admin_fragment_registrar));
+        transaction.addToBackStack(getString(R.string.tag_admin_fragment_registrar));
+        transaction.commit();
+    }
+
+    //    private void initFragmentoPerfilUsuario()
+//    {
+//        PerfilUsuarioFragment perfilUsuarioFragment  = new PerfilUsuarioFragment(this);
+//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//        transaction.replace(R.id.cliente_content_frame, perfilUsuarioFragment, getString(R.string.tag_user_fragment_perfil));
+//        transaction.addToBackStack(getString(R.string.tag_user_fragment_perfil));
+//        transaction.commit();
+//    }
 
     //Inicia el fragmento de perfil del administrador
     private void initFragmento_CRUD_Empleados_Administrador(){
@@ -92,4 +123,3 @@ public class AdministradorActivity extends AppCompatActivity implements BottomNa
 
 
 }
-
