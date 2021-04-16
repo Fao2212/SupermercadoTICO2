@@ -21,6 +21,7 @@ import com.example.supermercadotico.Models.Cliente;
 import com.example.supermercadotico.Models.Factura;
 import com.example.supermercadotico.FragmentsCliente.LogInFragment;
 import com.example.supermercadotico.Models.Producto;
+import com.example.supermercadotico.Users.Comprador;
 import com.example.supermercadotico.Users.TipoDeUsuario;
 import com.example.supermercadotico.Utils.Productos;
 import com.example.supermercadotico.Users.Usuario;
@@ -40,16 +41,20 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
 
 
     private Productos infodummyparaprobar;
+
     //Provisional
     private String userName = "Alex01";
     private String userPassWord = "1234";
     private String adminId = "123";
     private String adminPassWord = "password";
+    private ArrayList<Usuario> usuarios = new ArrayList<Usuario>();//Base de datos temporal
+
+    //---------------------------------------------------
 
     //widgets
     //Barra de navegación
     private BottomNavigationViewEx mBarraNavegacion;
-    private Usuario user;
+    private Comprador comprador;
     private Carrito carrito;
     private Sucursal sucursal;
     private TipoDeUsuario tipoDeUsuario;//Opcional, se puede quitar
@@ -231,6 +236,12 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
         transaction.commit();
     }
 
+    //Metodo que guarda los nuevos usuarios creados en la base de datos.
+    @Override
+    public void registrarUsuario(Comprador comprador) {
+        usuarios.add(comprador);
+    }
+
     @Override
     public ArrayList<Producto> getListaProductos() {
         Log.d(TAG, "getListaProductos: mandadnolista de productos");
@@ -280,9 +291,8 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
         return checkDatabase(user,password);
     }
 
-    private boolean validateAdminData(){
-
-
+    private boolean validateAdminData()//Pasar a la clase de administradores
+    {
         return checkDatabase("1","1");
     }
 

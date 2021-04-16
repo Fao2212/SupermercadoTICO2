@@ -3,15 +3,15 @@ package com.example.supermercadotico.Users;
 import com.example.supermercadotico.Controlador;
 import com.example.supermercadotico.Models.Producto;
 import com.example.supermercadotico.Sucursal;
-
+//Todo: para ver que sucursal es la favorita, entonces poner un array que tenga las visitas a la sucursal o cuando se cargan las facturas
+//Todo: hacer un conteo y un max de las sucursal donde se hizo la compra
 public class Comprador extends Usuario{
     private String correoElectronico;
-    private String metodoDePago;
     private String contrasena;
 
-    public  Comprador(String correoElectronico, String metodoDePago, String contrasena,Controlador controlador) {
+    public Comprador(String nombre, String contrasena, String direccion, String correoElectronico) {
+        super(nombre, contrasena, direccion);
         this.correoElectronico = correoElectronico;
-        this.metodoDePago = metodoDePago;
     }
 
     public String getCorreoElectronico()
@@ -22,16 +22,6 @@ public class Comprador extends Usuario{
     public void setCorreoElectronico(String correoElectronico)
     {
         this.correoElectronico = correoElectronico;
-    }
-
-    public String getMetodoDePago()
-    {
-        return metodoDePago;
-    }
-
-    public void setMetodoDePago(String metodoDePago)
-    {
-        this.metodoDePago = metodoDePago;
     }
 
     public String getContrasena()

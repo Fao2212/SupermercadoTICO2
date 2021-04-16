@@ -8,7 +8,7 @@ public class Empleado extends Usuario{
     EstadoDeEmpleado estado;
 
     public Empleado(String nombre, String contrasena, String edad, String direccion, String identificiacion, Controlador controlador) {
-        super(nombre, contrasena, edad, direccion, identificiacion, controlador);
+        super(nombre, contrasena, direccion);
     }
 
     @Override
