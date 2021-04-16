@@ -11,10 +11,6 @@ public class Empleado extends Usuario{
         super(nombre, contrasena, direccion);
     }
 
-    @Override
-    public void crearUsuario() {
-        controlador.registrarEmpleado(this);
-    }
 
     public void setEstado(EstadoDeEmpleado estado) {
         this.estado = estado;

@@ -23,7 +23,7 @@ public interface IClienteActivity {
     void inflateDescripcion_Factura_Fragment(Factura pFactura);
 
     //Este metodo lo utiliza el fragmento de registro y se envia el usuario creado a client activity para que se guarde en la base de datos
-    void registrarUsuario(Comprador comprador);
+    void registrarUsuario(Cliente cliente);
 
     ArrayList<Producto> getListaProductos();
 
@@ -32,6 +32,5 @@ public interface IClienteActivity {
     ArrayList<Factura> getListaFacturasAnteriores();
     void initUserView();
     void initSucursalView(String user,String password);//Cambiar el nombre como a logIn Request
-    void initAdminView();
     void initRegisterView();
 }

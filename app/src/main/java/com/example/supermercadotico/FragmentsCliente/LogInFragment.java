@@ -74,7 +74,7 @@ public class LogInFragment  extends Fragment {
         botonAdministrador.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mInterface.initAdminView();
+                //mInterface.initAdminView();//Que hacer aca?
             }
         });
 

@@ -11,7 +11,6 @@ public class Gerente extends Usuario{
     public void registarEmpleado(String nombre, String id, String contrasena, String direccion, String edad)
     {
         Empleado empleado = new Empleado(nombre,contrasena,edad,direccion,id,controlador);
-        empleado.crearUsuario();
     }
 
     public void eliminarEmpleado(Empleado empleado)
@@ -21,8 +20,4 @@ public class Gerente extends Usuario{
     }
 
 
-    @Override
-    public void crearUsuario() {
-        controlador.registrarGerente(this);
-    }
 }

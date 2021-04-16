@@ -2,6 +2,7 @@ package com.example.supermercadotico.FragmentsCliente;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.supermercadotico.ClienteActivity;
 import com.example.supermercadotico.IClienteActivity;
+import com.example.supermercadotico.Models.Cliente;
 import com.example.supermercadotico.R;
 import com.example.supermercadotico.Tools.EditTextManager;
 import com.example.supermercadotico.Users.Comprador;
@@ -50,7 +52,7 @@ public class RegistrarUsuarioFragment extends Fragment {
     }
     private void setButtton(View view)
     {
-        createUserButton = view.findViewById(R.id.botonRegistrarseInicio);
+        createUserButton = view.findViewById(R.id.botonCrearCuenta);
         createUserButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,12 +74,14 @@ public class RegistrarUsuarioFragment extends Fragment {
         textContrasena = new EditTextManager(view.findViewById(R.id.textContrasenaRegistroUsuario));
     }
 
-    private Usuario crearUsuario(){
+    private Cliente crearUsuario(){
         //TODO:Aqui van las condiciones de creacion. Si cumple con todo entonces puede crear el usuario
-        if (notEmptySpaces() && numericValues() && validEmail()) {
-            Comprador comprador = new Comprador(textNombre.getText(),textContrasena.getText(),textDireccion.getText(),textEmail.getText());
-        }
-        return null;
+//        if (notEmptySpaces() && numericValues() && validEmail()) {
+            Cliente cliente = new Cliente(textUsuario.getText(),textNombre.getText(),textApellidos.getText(),textDireccion.getText(),textEmail.getText(),textContrasena.getText());
+            cliente.toString();
+            mInterface.registrarUsuario(cliente);
+            //}
+        return cliente;
     }
 
     //Verificacion de que no queden espacios vacios

@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.Handler;
 import android.util.Log;
 import android.view.MenuItem;
 import com.example.supermercadotico.FragmentsCliente.FacturaDescripcionFragment;
@@ -22,6 +24,8 @@ import com.example.supermercadotico.Models.Factura;
 import com.example.supermercadotico.FragmentsCliente.LogInFragment;
 import com.example.supermercadotico.Models.Producto;
 import com.example.supermercadotico.Users.Comprador;
+import com.example.supermercadotico.Users.Empleado;
+import com.example.supermercadotico.Users.Gerente;
 import com.example.supermercadotico.Users.TipoDeUsuario;
 import com.example.supermercadotico.Utils.Productos;
 import com.example.supermercadotico.Users.Usuario;
@@ -35,30 +39,21 @@ import java.util.ArrayList;
  */
 public class ClienteActivity extends AppCompatActivity implements IClienteActivity, BottomNavigationView.OnNavigationItemSelectedListener{
 
-
-     //El tag de cada activity y fragmento esta en res/values/strings.xml
     private static final String TAG = "ClienteActivity";
-
 
     private Productos infodummyparaprobar;
 
-    //Provisional
-    private String userName = "Alex01";
-    private String userPassWord = "1234";
-    private String adminId = "123";
-    private String adminPassWord = "password";
-    private ArrayList<Usuario> usuarios = new ArrayList<Usuario>();//Base de datos temporal
+    private ArrayList<Cliente> clientes = new ArrayList<>();//Base de datos temporal (Representan las tablas que vamos  a usar)
+
+    private Cliente cliente;
+    private Carrito carrito;
+    private Inventario inventario;
 
     //---------------------------------------------------
 
     //widgets
     //Barra de navegación
     private BottomNavigationViewEx mBarraNavegacion;
-    private Comprador comprador;
-    private Carrito carrito;
-    private Sucursal sucursal;
-    private TipoDeUsuario tipoDeUsuario;//Opcional, se puede quitar
-    //Inventario inventario;//O cada sucursal tendra su inventario
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,6 +108,8 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
         return false;
     }
 
+    //-------------------------------------------------Inicilizar Fragmentos-------------------------------------------------
+
     /**
      * Inicializa el Fragment de Productos
      */
@@ -135,9 +132,6 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
         transaction.commit();
     }
 
-    /**
-     * Inicializa el Fragment de Perfil del CLiente
-     */
     private void initFragmento_Perfil(){
         PerfilClienteFragment perfilClienteFragment = new PerfilClienteFragment(); //todo: cambiar acá al fragment deseado
 
@@ -206,6 +200,8 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
         transaction.commit();
     }
 
+    //---------------------------------------------------------------------------------------------------------------------------------------------------
+
     //Ya le llego el producto que el usuario seleccionó, y ahora lo va a cargar en la descripción
     public void inflateDescripcion_Producto_Fragment(Producto pProducto) {
         ProductoDescripcionFragment productoDescripcionFragment = new ProductoDescripcionFragment();
@@ -236,12 +232,6 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
         transaction.commit();
     }
 
-    //Metodo que guarda los nuevos usuarios creados en la base de datos.
-    @Override
-    public void registrarUsuario(Comprador comprador) {
-        usuarios.add(comprador);
-    }
-
     @Override
     public ArrayList<Producto> getListaProductos() {
         Log.d(TAG, "getListaProductos: mandadnolista de productos");
@@ -260,44 +250,112 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
         Log.d(TAG, "getListaFacturasAnteriores: mandando lista de fcaturas");
         return null;
     }
-    //Usado para accesar desde otro fragmento a los metodos de esta clase
-    @Override
-    public void initUserView() {
-        //Inicializa el Fragment de Busqueda del Cliente
 
-            initBarraNavegacion();
-            initFragmento_Productos();
-    }
-
-    @Override
-    public void initSucursalView(String user,String password) {
-        if(validateUserData(user,password)) {
-            initFragmentoSeleccionDeSucursal();
-        }
-    }
-
-    @Override
-    public void initAdminView() {
-        validateAdminData();
-    }
+//-------------------------------------REGISTRO--------------------------------------------
 
     @Override
     public void initRegisterView() {
         initFragmentoRegistrarUsuario();
     }
 
-    private boolean validateUserData(String user,String password){
-
-        return checkDatabase(user,password);
+    //Metodo que guarda los nuevos usuarios creados en la base de datos.
+    @Override
+    public void registrarUsuario(Cliente cliente) {
+        clientes.add(cliente);
     }
 
-    private boolean validateAdminData()//Pasar a la clase de administradores
+
+
+//----------------------------------------------------------------------------------------
+
+
+//-------------------------------------LOGIN--------------------------------------------
+
+    @Override
+    public void initSucursalView(String user,String password) {
+        Cliente clienteInDatabase = checkClienteInDatabase(user,password);
+        if(clienteInDatabase != null) {
+            initFragmentoSeleccionDeSucursal();
+            this.cliente = clienteInDatabase;
+        }
+    }
+
+    //Inicializa el Fragment de Pantalla principal del cliente
+    @Override
+    public void initUserView() {
+        initBarraNavegacion();
+        initFragmento_Productos();
+    }
+
+    //------------------------------------------------------------------------------------
+
+    //-------------------------------------Compra------------------------------------------
+
+    public void crearCarritoDeCompra() //Se usa para crear cada nueva orden de compra que el cliente necesite hacer. Siempre y cuando no tenga un pedido confirmado
     {
-        return checkDatabase("1","1");
+        if(!carrito.isCancelable())
+            this.carrito = new Carrito();
     }
 
-    private boolean checkDatabase(String username,String password) {
-        return username.equals(userName) && password.equals(userPassWord);
+    public void comenzarCuentaRegresiva()//Hacer asincronica
+    {
+        new CountDownTimer(600000*5, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                //updateFrameDeContador();
+            }
+
+            public void onFinish() {
+                orderCompletada();
+            }
+
+        }.start();
+        //Cuando terminan los 5 minutos entonces se graba en la base de datos.
     }
+
+    public void confirmarOrden()
+    {
+        carrito.cancelable = true;
+        carrito.confirmado = true;
+        comenzarCuentaRegresiva();
+    }
+
+    public void orderCompletada()
+    {
+        crearCarritoDeCompra();
+        guardarFacturaEnBaseDeDatos();
+    }
+
+    public void agregarAlCarro(Producto producto)//Se agrega una referencia del producto y se cambia la cantidad
+    {
+        carrito.addProducto(producto);
+    }
+
+    public void eliminarDelCarro(Producto producto)
+    {
+        carrito.eliminarProducto(producto);
+    }
+
+    //------------------------------------------------------------------------------------
+
+
+    //-------------------------------DataBase Stuff------------------------------------
+
+    private Cliente checkClienteInDatabase(String username,String password) {
+        Cliente cliente = null;//Todo:Traer de la base de datos
+        // cliente = Buscar en base de datos return username.equals("") && password.equals("");
+        return cliente;
+    }
+
+    private void getUserFromDataBase(String userName){
+
+    }
+
+    private void guardarFacturaEnBaseDeDatos()
+    {
+       // carrito.generarFactura();
+    }
+
+    //------------------------------------------------------------------------------------
 
 }

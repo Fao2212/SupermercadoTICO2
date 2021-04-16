@@ -2,7 +2,7 @@ package com.example.supermercadotico.Users;
 
 import com.example.supermercadotico.Controlador;
 
-public abstract class Usuario {
+public class Usuario {
     protected String nombre;
     protected String contrasena;
     protected String direccion;
@@ -33,6 +33,5 @@ public abstract class Usuario {
         this.direccion = direccion;
     }
 
-    public abstract void crearUsuario();
 
 }
