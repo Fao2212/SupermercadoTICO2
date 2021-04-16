@@ -15,7 +15,7 @@ import com.example.supermercadotico.FragmentsCliente.ProductoDescripcionFragment
 import com.example.supermercadotico.FragmentsCliente.ProductosFragment;
 import com.example.supermercadotico.Models.Cliente;
 import com.example.supermercadotico.Models.Factura;
-import com.example.supermercadotico.Fragments.LogInFragment;
+import com.example.supermercadotico.FragmentsCliente.LogInFragment;
 import com.example.supermercadotico.Models.Producto;
 import com.example.supermercadotico.Utils.Productos;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
