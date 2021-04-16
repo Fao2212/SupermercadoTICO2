@@ -1,4 +1,4 @@
-package com.example.supermercadotico.Fragments;
+package com.example.supermercadotico.FragmentsCliente;
 
 import android.os.Bundle;
 
@@ -30,7 +30,7 @@ import java.util.ArrayList;
 public class ProductosFragment extends Fragment {
 
     //Tag para reconocer la clase
-    private static final String TAG = "BusquedaFragment";
+    private static final String TAG = "ProductosFragment";
 
     //Numero de columnas del fview
     private static final int NUM_COLUMNAS = 2;
