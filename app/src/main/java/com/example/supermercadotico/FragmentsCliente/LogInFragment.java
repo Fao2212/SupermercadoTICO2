@@ -57,11 +57,17 @@ public class LogInFragment  extends Fragment {
         botonEntrar = view.findViewById(R.id.botonEntrarInicio);
         botonRegistrarse = view.findViewById(R.id.botonRegistrarseInicio);
         botonAdministrador = view.findViewById(R.id.botonAdministradorInicio);
+        userEditText = view.findViewById(R.id.textUsuarioInicio);
+        passwordEditText = view.findViewById(R.id.textContrasenaInicio);
+
+
 
         botonEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mInterface.initSucursalView();
+                String user = userEditText.getText().toString();
+                String password = passwordEditText.getText().toString();
+                mInterface.initSucursalView(user,password);
             }
         });
 

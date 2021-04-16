@@ -21,6 +21,7 @@ import com.example.supermercadotico.Models.Cliente;
 import com.example.supermercadotico.Models.Factura;
 import com.example.supermercadotico.FragmentsCliente.LogInFragment;
 import com.example.supermercadotico.Models.Producto;
+import com.example.supermercadotico.Users.TipoDeUsuario;
 import com.example.supermercadotico.Utils.Productos;
 import com.example.supermercadotico.Users.Usuario;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -48,7 +49,11 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
     //widgets
     //Barra de navegación
     private BottomNavigationViewEx mBarraNavegacion;
-    private Controlador controlador;
+    private Usuario user;
+    private Carrito carrito;
+    private Sucursal sucursal;
+    private TipoDeUsuario tipoDeUsuario;//Opcional, se puede quitar
+    //Inventario inventario;//O cada sucursal tendra su inventario
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,10 +65,6 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
         infodummyparaprobar = new Productos();
         initFragmentoLogIn();
 
-    }
-
-    private void iniciarControlador() {
-        controlador = new Controlador();
     }
 
     private void initBarraNavegacion(){
@@ -252,18 +253,21 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
     @Override
     public void initUserView() {
         //Inicializa el Fragment de Busqueda del Cliente
-        initBarraNavegacion();
-        initFragmento_Productos();
+
+            initBarraNavegacion();
+            initFragmento_Productos();
     }
 
     @Override
-    public void initSucursalView() {
-        initFragmentoSeleccionDeSucursal();
+    public void initSucursalView(String user,String password) {
+        if(validateUserData(user,password)) {
+            initFragmentoSeleccionDeSucursal();
+        }
     }
 
     @Override
     public void initAdminView() {
-
+        validateAdminData();
     }
 
     @Override
@@ -271,5 +275,19 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
         initFragmentoRegistrarUsuario();
     }
 
+    private boolean validateUserData(String user,String password){
+        checkDatabase(user,password);
+        return true;
+    }
+
+    private boolean validateAdminData(){
+
+        checkDatabase("1","1");
+        return true;
+    }
+
+    private boolean checkDatabase(String username,String password) {
+        return username.equals(userName) && password.equals(userPassWord);
+    }
 
 }

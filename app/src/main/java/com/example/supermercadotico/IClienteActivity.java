@@ -27,7 +27,7 @@ public interface IClienteActivity {
 
     ArrayList<Factura> getListaFacturasAnteriores();
     void initUserView();
-    void initSucursalView();
+    void initSucursalView(String user,String password);//Cambiar el nombre como a logIn Request
     void initAdminView();
 
     void initRegisterView();
