@@ -11,7 +11,6 @@ import com.example.supermercadotico.Users.Usuario;
 //Todo: Tiene que ser un singleton?
 //Todo: Creo que no hay problema con identidicar que usario hace que, porque los metodos son llamados por el usuario.
 public class Controlador {
-    //Todo: Metodos de pantalla en main activity
     Usuario usuario;
     Carrito carrito;
     Sucursal sucursal;
