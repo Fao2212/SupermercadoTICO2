@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import com.bumptech.glide.Glide;
 import com.example.supermercadotico.ClienteActivity;
 import com.example.supermercadotico.IClienteActivity;
+import com.example.supermercadotico.Users.Comprador;
 import com.example.supermercadotico.Users.Usuario;
 import com.example.supermercadotico.R;
 import com.like.LikeButton;
@@ -26,7 +27,7 @@ public class PerfilUsuarioFragment extends Fragment implements OnLikeListener {
 
     //Variables
     //Objeto donde se va a cargar la información que el cliente seleccionó del fragment pasado
-    private Usuario mUsuario;                                   //todo: cambiar el objeto que se va a mostrar al objeto correspondiende
+    private Comprador mComprador;                                   //todo: cambiar el objeto que se va a mostrar al objeto correspondiende
     private IClienteActivity mInterfaceClienteActivity;
     Context mContext;
 
@@ -47,11 +48,11 @@ public class PerfilUsuarioFragment extends Fragment implements OnLikeListener {
         super.onCreate(savedInstanceState);
         //El bundle es lo que permite que el objeto puede enviarse desde el fragmento anterior a este,
         //por eso es parcelable
-        Bundle bundle = this.getArguments();
+        /*Bundle bundle = this.getArguments();
         if(bundle!=null){
             mUsuario = bundle.getParcelable(getString(R.string.intent_perfil_usuario));  //todo acá hay que ir al archivo de strings.xml y poner otro string que sea el intent correspondiente
             Log.d(TAG, "onCreate: Tengo el Usuario " + mUsuario.getNombre());  //todo: se cambia al objeto correspondiente
-        }
+        }*/
     }
 
     //Acá se asignan los componentes a los objetos.. se conectan  con el layout
@@ -85,18 +86,18 @@ public class PerfilUsuarioFragment extends Fragment implements OnLikeListener {
         Log.d(TAG, "init: Initializing" + getString(R.string.tag_user_fragment_perfil));    //todo: cambiar todo con lo del
 
         //Si el producto no es null, osea no le llegó el produto del fragment anterior
-        if (mUsuario !=null){ //Si le llegó el Producto
+        if (mComprador !=null){ //Si le llegó el Producto
             //!!! Acá le pone la imagen pero en este caso, no hay que hacerlo, ver ejemplo en lo de productos
             Glide.with(getActivity());
                     //.load(mUsuario.getImagenUsuario()) //Tiene imagen?
                     //.into(mImagenPerfilUsuario);   //Le pone la imagen
 
 
-            mEditTextUsuarioPerfilUsuario.setText(mUsuario.getNombre());
-            mEditTextNombrePerfilUsuario.setText(mUsuario.getNombre()); // Se repite con lo anterior?
+            mEditTextUsuarioPerfilUsuario.setText(mComprador.getNombre());
+            mEditTextNombrePerfilUsuario.setText(mComprador.getNombre()); // Se repite con lo anterior?
 
             //mEditTextApellidoPerfilUsuario.setText(mUsuario.getApellido()); // Falta el metodo en la clase?
-            mEditTextDireccionPerfilUsuario.setText(mUsuario.getDireccion());
+            mEditTextDireccionPerfilUsuario.setText(mComprador.getDireccion());
             //mEditTextEmailPerfilUsuario.setText(mUsuario.getEmail()); // Falta el metodo en la clase?
             //mEditTextContrasenaPerfilUsuario.setText(mUsuario.getContrasena()); // Falta el metodo en la clase?
         }

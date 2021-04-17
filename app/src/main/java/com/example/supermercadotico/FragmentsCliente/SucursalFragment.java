@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
@@ -53,6 +54,13 @@ public class SucursalFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_seleccion_sucursal,container,false);
+        setBotones(view);
+        setSpinnerProvincias(view);
+        return view;
+    }
+
+    public void setBotones(View view)
+    {
         botonConfirmar = view.findViewById(R.id.botonConfirmarSeleccionSucursal);
         botonConfirmar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,18 +68,16 @@ public class SucursalFragment extends Fragment {
                 mInterface.initUserView();
             }
         });
-        setProvincias();
-        return view;
     }
 
-    public void setBotones(View view)
+    public void setSpinnerProvincias(View view)
     {
-
-    }
-
-    public void setProvincias()
-    {
-
+        Log.d("Y la mierda","Ylaslallas");
+        spinnerProvincias = view.findViewById(R.id.spinnerSucursal);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(mContext,
+                R.array.provincias_names, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        spinnerProvincias.setAdapter(adapter);
     }
 
 }

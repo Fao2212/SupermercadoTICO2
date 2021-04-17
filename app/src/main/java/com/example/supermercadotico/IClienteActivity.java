@@ -5,6 +5,7 @@ import com.example.supermercadotico.Models.Categoria;
 import com.example.supermercadotico.Models.Cliente;
 import com.example.supermercadotico.Models.Factura;
 import com.example.supermercadotico.Models.Producto;
+import com.example.supermercadotico.Users.Comprador;
 
 import java.util.ArrayList;
 
@@ -33,14 +34,15 @@ public interface IClienteActivity {
     ArrayList<Producto> getListaProductos_deCategoria(String pIDCategoria);
 
     ArrayList<Producto> getListaProductos_Barra_Busqueda(String pName);
+    //Este metodo lo utiliza el fragmento de registro y se envia el usuario creado a client activity para que se guarde en la base de datos
+    void registrarUsuario(Cliente cliente);
+
+
 
     Cliente getCliente();
 
     ArrayList<Factura> getListaFacturasAnteriores();
     void initUserView();
     void initSucursalView(String user,String password);//Cambiar el nombre como a logIn Request
-
-    void initAdminView();
-
     void initRegisterView();
 }

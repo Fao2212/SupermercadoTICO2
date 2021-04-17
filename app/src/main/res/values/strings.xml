@@ -42,5 +42,14 @@
     <string name="funciones">Funciones:</string>
     <string name="todo">todo</string>
 
+    <string-array name="provincias_names">
+        <item>Alajuela</item>
+        <item>Cartago</item>
+        <item>Heredia</item>
+        <item>Guanacaste</item>
+        <item>San Jose</item>
+        <item>Limon</item>
+        <item>Puntarenas</item>
+    </string-array>
 
 </resources>
