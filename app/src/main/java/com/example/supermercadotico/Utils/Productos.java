@@ -13,7 +13,7 @@ import com.example.supermercadotico.R;
  */
 public class Productos {
     public Producto[] PRODUCTOS={
-            Banano,Fresa, Pina
+            Lechuga,Fresa, Jabon
     };
 
     public Factura[] FACTURAS={
@@ -43,12 +43,12 @@ public class Productos {
     PRODUCTOS
      */
 
-    public static final Producto Banano = new Producto("https://hdstatic.net/gridfs/holadoctor/55803ef0b93795c1498b4567-1593215415,863.jpg",
-            "Banano","800","100", "p o t a s i o", "Fruta", "El banano feliz");
+    public static final Producto Lechuga = new Producto("https://soycomocomo.es/media/2016/06/lechuga.jpg",
+            "Lechuga","800","100", "Para hacer ensaladas", "002", "La lechuga feliz");
     public static final Producto Fresa = new Producto("https://img.interempresas.net/fotos/1341264.jpeg",
-            "Fresa","500","200", "Es una fresa", "Fruta", "La Fresa feliz");
-    public static final Producto Pina = new Producto("https://okdiario.com/img/recetas/2016/06/28/beneficios-pina.jpg",
-            "Piña","1200","30", "Es una piña", "Fruta", "La Piña feliz");
+            "Fresa","500","200", "Es una fresa", "001", "La Fresa feliz");
+    public static final Producto Jabon = new Producto("https://cdn2.cocinadelirante.com/sites/default/files/styles/gallerie/public/images/2019/12/15-ideas-de-negocio-desde-casa-con-productos-artesanales-mexico-jabon-neutro.jpg",
+            "Jabon","1200","30", "Es un Jabon", "003", "El Jabon feliz");
 
     /*
     FACTURAS

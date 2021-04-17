@@ -8,6 +8,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+
+import com.example.supermercadotico.FragmentsAdministrador.PerfilUsuarioFragment;
+import com.example.supermercadotico.FragmentsCliente.Busqueda_Productos.BusquedaProductosFragment;
 import com.example.supermercadotico.FragmentsCliente.FacturaDescripcionFragment;
 import com.example.supermercadotico.FragmentsCliente.FacturasFragment;
 import com.example.supermercadotico.FragmentsCliente.PerfilAdministradorFragment;
@@ -64,8 +67,8 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
         mBarraNavegacion = findViewById(R.id.navbar_inferior_view_cliente); //Barra de navegacion
         mBarraNavegacion.setOnNavigationItemSelectedListener(this);
         infodummyparaprobar = new Productos();
-        initFragmentoLogIn();
-
+        //initFragmentoLogIn();
+        initFragmento_Facturas();
     }
 
     private void initBarraNavegacion(){
@@ -85,7 +88,7 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
             }
             case R.id.busqueda_nav_cliente:{
                 Log.d(TAG, "onNavigationItemSelected: Busqueda");
-                initFragmento_Productos();
+                initFragmento_Busqueda();
                 item.setChecked(true);
                 break;
             }
@@ -112,13 +115,14 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
     /**
      * Inicializa el Fragment de Productos
      */
-    private void initFragmento_Productos(){
-        ProductosFragment busquedaFragment = new ProductosFragment();
+    private void initFragmento_Busqueda(){
+        BusquedaProductosFragment busquedaProductosFragment = new BusquedaProductosFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.cliente_content_frame, busquedaFragment, getString(R.string.tag_user_fragment_lista_productos));
-        transaction.addToBackStack(getString(R.string.tag_user_fragment_lista_productos));
+        transaction.replace(R.id.cliente_content_frame, busquedaProductosFragment, getString(R.string.tag_user_fragment_busqueda));
+        transaction.addToBackStack(getString(R.string.tag_user_fragment_busqueda));
         transaction.commit();
     }
+
 
     /**
      * Inicializa el Fragment de Facturas
@@ -166,14 +170,14 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
         transaction.commit();
     }
 
-//    private void initFragmentoPerfilUsuario()
-//    {
-//        PerfilUsuarioFragment perfilUsuarioFragment  = new PerfilUsuarioFragment(this);
-//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//        transaction.replace(R.id.cliente_content_frame, perfilUsuarioFragment, getString(R.string.tag_user_fragment_perfil));
-//        transaction.addToBackStack(getString(R.string.tag_user_fragment_perfil));
-//        transaction.commit();
-//    }
+    private void initFragmentoPerfilUsuario()
+    {
+        PerfilUsuarioFragment perfilUsuarioFragment  = new PerfilUsuarioFragment(this);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.cliente_content_frame, perfilUsuarioFragment, getString(R.string.tag_user_fragment_perfil));
+        transaction.addToBackStack(getString(R.string.tag_user_fragment_perfil));
+        transaction.commit();
+    }
 
     private void initFragmentoPerfilAdministrador()
     {
@@ -239,11 +243,26 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
         ArrayList<Producto> listaProductos = new ArrayList<Producto>();
 
         for (Producto producto : infodummyparaprobar.PRODUCTOS){
-            listaProductos.add(producto);
+            if (producto.getCategoria() == pIDCategoria) {
+                listaProductos.add(producto);
+            }
         }
-
         return listaProductos;
     }
+
+    @Override
+    public ArrayList<Producto> getListaProductos_Barra_Busqueda(String pName) {
+        Log.d(TAG, "getListaProductos_Barra_Busqueda: Buscando Productos que tengan " + pName);
+        ArrayList<Producto> listaProductos = new ArrayList<Producto>();
+
+        for (Producto producto : infodummyparaprobar.PRODUCTOS){
+            if (producto.getNombre().toLowerCase().contains(pName.toLowerCase())) {
+                listaProductos.add(producto);
+            }
+        }
+        return listaProductos;
+    }
+
 
     @Override
     public Cliente getCliente() {
@@ -263,7 +282,7 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
         //Inicializa el Fragment de Busqueda del Cliente
 
             initBarraNavegacion();
-            initFragmento_Productos();
+            initFragmento_Busqueda();
     }
 
     @Override
@@ -304,7 +323,7 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
 
     //Le manda un array de catgeorias al fragment de categorias
     @Override
-    public ArrayList<Categoria> inflateCategorias_Busqueda_Fragment() {
+    public ArrayList<Categoria> getListaCategorias() {
         ArrayList<Categoria>  categorias = new ArrayList<Categoria>();
 
         for (Categoria categoria : infodummyparaprobar.CATEGORIAS){
@@ -314,6 +333,37 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
         return categorias;
     }
 
+    @Override
+    public void inflateProductos_Categoria(String pIDCategoria) {
+
+        ProductosFragment productosFragment = new ProductosFragment();
+
+        //Acá es donde le pasa el objeto al fragment de la descripción
+        Bundle args= new Bundle();
+        args.putString("IdCategoria", pIDCategoria);
+        productosFragment.setArguments(args); //Acá se lo pasa   //  //todo: cambiar el fragment acá
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.cliente_content_frame, productosFragment, getString(R.string.tag_user_fragment_lista_productos));
+        transaction.addToBackStack(getString(R.string.tag_user_fragment_lista_productos));
+        transaction.commit();
+    }
+
+    @Override
+    public void inflateProductos_BarraBusqueda(String pNombre) {
+
+        ProductosFragment productosFragment = new ProductosFragment();
+
+        //Acá es donde le pasa el objeto al fragment de la descripción
+        Bundle args= new Bundle();
+        args.putString("NombreProducto", pNombre);
+        productosFragment.setArguments(args); //Acá se lo pasa   //  //todo: cambiar el fragment acá
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.cliente_content_frame, productosFragment, getString(R.string.tag_user_fragment_lista_productos));
+        transaction.addToBackStack(getString(R.string.tag_user_fragment_lista_productos));
+        transaction.commit();
+    }
 
 
 }

@@ -22,10 +22,17 @@ public interface IClienteActivity {
     //Va a pasar por el activity y el activity va a iniciar la descripción de la factura
     void inflateDescripcion_Factura_Fragment(Factura pFactura);
 
-    ArrayList<Categoria> inflateCategorias_Busqueda_Fragment();
+    ArrayList<Categoria> getListaCategorias();
 
-    //Envia a los productos una lista de categoria
+    //Infla productos de una categoria específica
+    void inflateProductos_Categoria(String pIDCategoria);
+
+    void inflateProductos_BarraBusqueda(String pNombre);
+
+    //Busca una lista de una categoría específica
     ArrayList<Producto> getListaProductos_deCategoria(String pIDCategoria);
+
+    ArrayList<Producto> getListaProductos_Barra_Busqueda(String pName);
 
     Cliente getCliente();
 

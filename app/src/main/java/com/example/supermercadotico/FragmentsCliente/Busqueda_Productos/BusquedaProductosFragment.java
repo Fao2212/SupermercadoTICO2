@@ -13,6 +13,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.RelativeLayout;
 
 import com.example.supermercadotico.FragmentsCliente.FacturasRecyclerViewAdapter;
 import com.example.supermercadotico.IClienteActivity;
@@ -24,7 +26,7 @@ import com.example.supermercadotico.Utils.Productos;
 import java.util.ArrayList;
 
 
-public class BusquedaProductosFragment extends Fragment {
+public class BusquedaProductosFragment extends Fragment implements View.OnClickListener {
 
     //Tag para reconocer la clase
     private static final String TAG = "BusquedProductosFragmen";                      //< todo: Cambiar al Tag del Fragment > !!!
@@ -41,6 +43,9 @@ public class BusquedaProductosFragment extends Fragment {
     private ArrayList<Categoria> mListaCategorias = new ArrayList<>();        //< todo:Cambiar a la lista del objeto correspondiente > !!!
     private IClienteActivity interfazClienteActivity;
 
+    private EditText espacioBusqueda;
+    private RelativeLayout botonBusqueda;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -48,7 +53,11 @@ public class BusquedaProductosFragment extends Fragment {
         Log.d(TAG, "onCreateView: Iniciado");
 
         //Carga el recycler view
+        espacioBusqueda = view.findViewById(R.id.edit_text_busqueda_producto);
+        botonBusqueda = view.findViewById(R.id.boton_busqueda_producto);
         mRecyclerView = view.findViewById(R.id.recyclerView_busqueda_producto);                         //< todo:Cambiar al recycler view correspondiente > !!!
+
+        botonBusqueda.setOnClickListener(this);
 
         //Carga las facturas a la lista
         interfazClienteActivity = (IClienteActivity) getActivity();
@@ -59,7 +68,8 @@ public class BusquedaProductosFragment extends Fragment {
     private void findCategerias(){
         //Acá le caen todos los datos de facturas
         Productos productos = new Productos();                              //Está utilizando los datos del paquete UTIL para cargar datos dummy
-         mListaCategorias = interfazClienteActivity.inflateCategorias_Busqueda_Fragment();
+         mListaCategorias = interfazClienteActivity.getListaCategorias();
+        Log.d(TAG, "findCategerias: "+mListaCategorias.get(0).getCategoria());
         //Inicia el recycler view
         initRecyclerView();
     }
@@ -73,5 +83,13 @@ public class BusquedaProductosFragment extends Fragment {
         //Se agregan los datos al adapterView
         mRecyclerViewAdapter = new BusquedaProductosRecyclerViewAdapter(mListaCategorias, getActivity());   //todo: agrega la lista correspondiente  y cambiar el objeto al recycler corresponidentea lo que pide el recyclerView correspondiente
         mRecyclerView.setAdapter(mRecyclerViewAdapter);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.boton_busqueda_producto){
+            Log.d(TAG, "onClick: Buscar producto " + espacioBusqueda.getText());
+            interfazClienteActivity.inflateProductos_BarraBusqueda(espacioBusqueda.getText().toString());
+        }
     }
 }

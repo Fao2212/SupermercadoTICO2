@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.supermercadotico.IClienteActivity;
 import com.example.supermercadotico.Models.Producto;
 import com.example.supermercadotico.R;
 import com.example.supermercadotico.Utils.Productos;
@@ -39,16 +40,32 @@ public class ProductosFragment extends Fragment {
     private RecyclerView mRecyclerView;
 
     //Variables
+    private IClienteActivity interfaceclienteActivity;
     private StaggeredGridLayoutManager mStaggeredGridLayoutManager;
     private ProductosRecyclerViewAdapter mRecyclerViewAdapter;
     private ArrayList<Producto> mListaProductos = new ArrayList<>();
+    private String mCategoria = " ";
+    private String mNombreProducto = " ";
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Bundle bundle = this.getArguments();
+        if(bundle!=null){
+                mCategoria = bundle.getString("IdCategoria");  //Acá toma el objeto
+                mNombreProducto = bundle.getString("NombreProducto");
+            Log.d(TAG, "onCreate: Tengo el producto que seleccionó el cliente" + mCategoria);
+            Log.d(TAG, "onCreate: Tengo el producto que seleccionó el cliente" + mNombreProducto);
+
+        }
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
        View view = inflater.inflate(R.layout.fragment_productos,container, false);
         Log.d(TAG, "onCreateView: Iniciado");
+        interfaceclienteActivity = (IClienteActivity) getActivity();
 
         //Carga el recycler view
         mRecyclerView = view.findViewById(R.id.productos_recyclerView);
@@ -58,17 +75,16 @@ public class ProductosFragment extends Fragment {
        return view;
     }
 
+    //Se conecta con la interfaz y ClienteActivity le da la lista con los productos de esa categoria
     private void findProducts(){
         //Acá le caen todos los datos de productos
-        Productos productos = new Productos();
-
-        for (Producto producto : productos.PRODUCTOS){
-            mListaProductos.add(producto);
+        if (mCategoria != null){
+            mListaProductos = interfaceclienteActivity.getListaProductos_deCategoria(mCategoria);
+        }else {
+            mListaProductos = interfaceclienteActivity.getListaProductos_Barra_Busqueda(mNombreProducto);
         }
-
         //Inicia el recycler view
         initRecyclerView();
-
     }
 
     //Crea las tarjetas

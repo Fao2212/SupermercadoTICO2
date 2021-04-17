@@ -22,7 +22,7 @@ import java.util.ArrayList;
 //Para poner la lista de items
 public class ProductosRecyclerViewAdapter extends RecyclerView.Adapter<ProductosRecyclerViewAdapter.ViewHolder> {
 
-    private static final String TAG = "BusquedaRecyclerViewAda";
+    private static final String TAG = "ProducsRecyclerViewAda";
 
     //variables
     private ArrayList<Producto> mProductos = new ArrayList<>();  //Lista de productos que se van a cargar en el fragmento

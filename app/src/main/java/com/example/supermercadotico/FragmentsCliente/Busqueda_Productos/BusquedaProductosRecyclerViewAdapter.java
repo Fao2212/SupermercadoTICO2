@@ -38,21 +38,21 @@ public class BusquedaProductosRecyclerViewAdapter extends RecyclerView.Adapter<B
     }
 
     @Override
-    public BusquedaProductosRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //Acá el view de la tarjeta se conecta con en layout
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_producto_tarjeta,parent,false);
-        BusquedaProductosRecyclerViewAdapter.ViewHolder holder = new BusquedaProductosRecyclerViewAdapter.ViewHolder(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_categoria_tarjeta,parent,false);
+        ViewHolder holder = new ViewHolder(view);
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(final BusquedaProductosRecyclerViewAdapter.ViewHolder holder, final int position) {
-        Log.d(TAG, "onBindViewHolder: called");
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
+        Log.d(TAG, "onBindViewHolder: called" + mCategorias.get(position).getImagen_categoria());
 
 //        //Creo que carga las cosas, a como el usuario va scrolleando hacia abajo o hacia arriba
 //        RequestOptions requestOptions = new RequestOptions().placeholder(R.drawable.ic_launcher_background);
 
-        //coloca la imagen en el image view de la tarjeta
+       // coloca la imagen en el image view de la tarjeta
         Glide.with(mContext)
                 .load(mCategorias.get(position).getImagen_categoria())
                 .centerCrop()
@@ -63,9 +63,8 @@ public class BusquedaProductosRecyclerViewAdapter extends RecyclerView.Adapter<B
         holder.nombreCategoria.setText(mCategorias.get(position).getCategoria());
         holder.cardView.setOnClickListener((v -> {
             Log.d(TAG, "onBindViewHolder: clicked on:" + mCategorias.get(position).getCategoria() );
-
             //Cuando se presione un producto, va a pasar por la interfaz y el activity lo va a cargar en el fragmento de la descripcion
-            //mInterface.inflateDescripcion_Producto_Fragment(mProductos.get(position));
+            mInterface.inflateProductos_Categoria(mCategorias.get(position).getId_categoria());
         }));
 
     }
