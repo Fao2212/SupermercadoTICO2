@@ -12,6 +12,7 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.supermercadotico.ClienteActivity;
 import com.example.supermercadotico.IClienteActivity;
@@ -80,6 +81,7 @@ public class RegistrarUsuarioFragment extends Fragment {
             Cliente cliente = new Cliente(textUsuario.getText(),textNombre.getText(),textApellidos.getText(),textDireccion.getText(),textEmail.getText(),textContrasena.getText());
             cliente.toString();
             mInterface.registrarUsuario(cliente);
+            mInterface.cerrarVentana();
             //}
         return cliente;
     }
