@@ -50,7 +50,7 @@ public class CarritoRecyclerViewAdapter extends RecyclerView.Adapter<CarritoRecy
         Log.d(TAG, "onBindViewHolder: called" );
         //Actualizar la vara
 
-        holder.precioProducto.setText(mItemsCarrito.get(position).getPrecio());
+        holder.precioProducto.setText("₡"+mItemsCarrito.get(position).getPrecio()+" por unidad");
         holder.nombreProducto.setText(mItemsCarrito.get(position).getNombre());
 
        holder.botonMasProductos.setOnClickListener((v -> {
@@ -64,7 +64,6 @@ public class CarritoRecyclerViewAdapter extends RecyclerView.Adapter<CarritoRecy
            holder.cantidadProducto.setText("13");
            //Cuando se presione un producto, va a pasar por la interfaz y el activity lo va a cargar en el fragmento de la descripcion
        }));
-
     }
 
     //Acá es donde le pegamos la interfaz al fragmento
