@@ -18,6 +18,7 @@ public class Carrito {
         this.confirmado = false;
         this.cancelable = true;
         this.time = 5*60;
+        this.productos = new ArrayList<>();
     }
 
     public ArrayList<Producto> getProductos() {

@@ -58,7 +58,7 @@ public class CarritoFragment extends Fragment implements View.OnClickListener {/
         totalCompra = view.findViewById(R.id.total_carrito_compras);
         botonBorrarCarrito = view.findViewById(R.id.boton_borrar_carrito_carrito_compras);
         botonConfirmarCarrito = view.findViewById(R.id.boton_confirmar_carrito_compras);
-        mRecyclerView = view.findViewById(R.id.recyclerView_busqueda_producto);                         //< todo:Cambiar al recycler view correspondiente > !!!
+        mRecyclerView = view.findViewById(R.id.carrito_compras_recyclerView);                         //< todo:Cambiar al recycler view correspondiente > !!!
 
         botonConfirmarCarrito.setOnClickListener(this);
         botonBorrarCarrito.setOnClickListener(this);
@@ -71,8 +71,8 @@ public class CarritoFragment extends Fragment implements View.OnClickListener {/
 
     private void findItemsCarrito(){
         //Acá le caen todos los datos de los productos
-       // mListaItemsCarrito = interfazClienteActivity.getListaItemsCarrito();
-        Log.d(TAG, "findItemsCarrito: "+mListaItemsCarrito.get(0).getCategoria());
+        mListaItemsCarrito = interfazClienteActivity.getListaItemsCarrito();
+        //Log.d(TAG, "findItemsCarrito: "+mListaItemsCarrito.get(0).getCategoria());
         //Inicia el recycler view
         initRecyclerView();
     }

@@ -13,6 +13,7 @@ import android.view.MenuItem;
 
 import com.example.supermercadotico.FragmentsAdministrador.PerfilUsuarioFragment;
 import com.example.supermercadotico.FragmentsCliente.Busqueda_Productos.BusquedaProductosFragment;
+import com.example.supermercadotico.FragmentsCliente.CarritoCompras.CarritoFragment;
 import com.example.supermercadotico.FragmentsCliente.FacturaDescripcionFragment;
 import com.example.supermercadotico.FragmentsCliente.FacturasFragment;
 import com.example.supermercadotico.FragmentsCliente.PerfilAdministradorFragment;
@@ -68,6 +69,7 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
         mBarraNavegacion.setOnNavigationItemSelectedListener(this);
         infodummyparaprobar = new Productos();
         //initFragmentoLogIn();
+        crearCarritoDeCompra();//TODO:QUITAR
         initFragmento_Facturas();
     }
 
@@ -94,6 +96,7 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
             }
             case R.id.carrito_nav_cliente:{
                 Log.d(TAG, "onNavigationItemSelected: Carrito");
+                initFragmentoCarrito();
                 item.setChecked(true);
                 break;
             }
@@ -205,6 +208,15 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
         transaction.commit();
     }
 
+    private void initFragmentoCarrito() {
+
+        CarritoFragment carritoFragment  = new CarritoFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.cliente_content_frame, carritoFragment, getString(R.string.tag_user_fragment_carrito_compras));
+        transaction.addToBackStack(getString(R.string.tag_user_fragment_carrito_compras));
+        transaction.commit();
+    }
+
     //---------------------------------------------------------------------------------------------------------------------------------------------------
 
     //Ya le llego el producto que el usuario seleccionó, y ahora lo va a cargar en la descripción
@@ -285,6 +297,12 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
         initFragmentoRegistrarUsuario();
     }
 
+    @Override
+    public ArrayList<Producto> getListaItemsCarrito() {
+       return carrito.getProductos();
+    }
+
+
     //Metodo que guarda los nuevos usuarios creados en la base de datos.
     @Override
     public void registrarUsuario(Cliente cliente) {
@@ -308,10 +326,8 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
     }
 
     //Inicializa el Fragment de Pantalla principal del cliente
-    @Override
     public void initAdminView() {
         Log.d(TAG, "initAdminView: Iniciando Vista de Administrador");
-        validateAdminData();
         Intent intent = new Intent(ClienteActivity.this, AdministradorActivity.class);
         startActivity(intent);
         finish();
@@ -329,7 +345,6 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
 
     public void crearCarritoDeCompra() //Se usa para crear cada nueva orden de compra que el cliente necesite hacer. Siempre y cuando no tenga un pedido confirmado
     {
-        if(!carrito.isCancelable())
             this.carrito = new Carrito();
     }
 
@@ -362,9 +377,9 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
         guardarFacturaEnBaseDeDatos();
     }
 
-    public void agregarAlCarro(Producto producto)//Se agrega una referencia del producto y se cambia la cantidad
-    {
-        carrito.addProducto(producto);
+    @Override
+    public void agregarAlCarrito(Producto mProducto) {
+        carrito.addProducto(mProducto);
     }
 
     public void eliminarDelCarro(Producto producto)

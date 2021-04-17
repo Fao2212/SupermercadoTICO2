@@ -13,6 +13,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
+import com.example.supermercadotico.Controlador;
+import com.example.supermercadotico.IClienteActivity;
 import com.example.supermercadotico.Models.Producto;
 import com.example.supermercadotico.R;
 import com.like.LikeButton;
@@ -36,12 +38,14 @@ public class ProductoDescripcionFragment extends Fragment implements OnLikeListe
     private LikeButton mBotonAgregarCarrito;   //Boton de like que hace una animación cuando se presiona
     private RelativeLayout mBotonAtras;      //Botón de la flecha de la barra de arriba
     private ImageView mImagenProducto;      //Imagen del producto
+    private IClienteActivity mInterface;
 
     //Se carga el bundle en el onCreate, por que OnCreate se ejecuta primero que OnCreate view,
     //para que cuando se busquen los componentes ya el bundle con el objeto de producto ya este cargado
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mInterface = (IClienteActivity) getActivity();
         //El bundle es lo que permite que el objeto producto puede enviarse desde el fragmento anterior a este,
         //por eso es parcelable
         Bundle bundle = this.getArguments();
@@ -98,7 +102,7 @@ public class ProductoDescripcionFragment extends Fragment implements OnLikeListe
     //Cuando se presiona el botón de like y queda de color verde
     @Override
     public void liked(LikeButton likeButton) {
-        Log.d(TAG, "Agregado al Carrito: ");
+        mInterface.agregarAlCarrito(mProducto);
     }
 
     //Cuando se vuelve a presionar para quitarle el like, queda de color negro. 

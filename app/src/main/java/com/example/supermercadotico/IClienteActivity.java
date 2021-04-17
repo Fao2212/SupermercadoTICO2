@@ -45,4 +45,8 @@ public interface IClienteActivity {
     void initUserView();
     void initSucursalView(String user,String password);//Cambiar el nombre como a logIn Request
     void initRegisterView();
+
+    ArrayList<Producto> getListaItemsCarrito();
+
+    void agregarAlCarrito(Producto mProducto);
 }
