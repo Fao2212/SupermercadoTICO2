@@ -2,6 +2,7 @@ package com.example.supermercadotico;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
@@ -10,6 +11,7 @@ import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.supermercadotico.FragmentsAdministrador.PerfilUsuarioFragment;
 import com.example.supermercadotico.FragmentsCliente.Busqueda_Productos.BusquedaProductosFragment;
@@ -388,6 +390,11 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
     @Override
     public void agregarAlCarrito(Producto mProducto) {
         carrito.addProducto(mProducto);
+    }
+
+    @Override
+    public void cerrarVentana() {
+        initFragmentoLogIn();
     }
 
     public void eliminarDelCarro(Producto producto)

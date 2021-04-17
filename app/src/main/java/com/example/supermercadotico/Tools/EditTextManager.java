@@ -13,7 +13,7 @@ public class EditTextManager {
     public EditTextManager(EditText editText) {
         this.editText = editText;
         this.cleared = false;
-        addListener();
+        //addListener();
     }
 
     public String getText() {
@@ -38,6 +38,8 @@ public class EditTextManager {
     private void setCleared()
     {
         this.cleared = true;
+        this.editText.setFocusable(true);
+        this.editText.setFocusableInTouchMode(true);
     }
 
 

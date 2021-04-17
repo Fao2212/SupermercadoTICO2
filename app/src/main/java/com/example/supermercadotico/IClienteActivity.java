@@ -1,6 +1,10 @@
 package com.example.supermercadotico;
 
 
+import android.view.View;
+
+import androidx.fragment.app.Fragment;
+
 import com.example.supermercadotico.Models.Categoria;
 import com.example.supermercadotico.Models.Cliente;
 import com.example.supermercadotico.Models.Factura;
@@ -49,4 +53,6 @@ public interface IClienteActivity {
     ArrayList<Producto> getListaItemsCarrito();
 
     void agregarAlCarrito(Producto mProducto);
+
+    void cerrarVentana();
 }
