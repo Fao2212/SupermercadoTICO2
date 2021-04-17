@@ -67,8 +67,7 @@ public class BusquedaProductosFragment extends Fragment implements View.OnClickL
 
     private void findCategerias(){
         //Acá le caen todos los datos de facturas
-        Productos productos = new Productos();                              //Está utilizando los datos del paquete UTIL para cargar datos dummy
-         mListaCategorias = interfazClienteActivity.getListaCategorias();
+        mListaCategorias = interfazClienteActivity.getListaCategorias();
         Log.d(TAG, "findCategerias: "+mListaCategorias.get(0).getCategoria());
         //Inicia el recycler view
         initRecyclerView();

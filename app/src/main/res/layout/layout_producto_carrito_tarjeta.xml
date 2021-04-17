@@ -15,7 +15,7 @@
         ID bton mas: boton_mas_tarjeta_carrito
      -->
     <androidx.cardview.widget.CardView
-        android:id="@+id/tarjeta_producto_carrito"
+        android:id="@+id/tarjeta_producto_carrito_card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -44,12 +44,12 @@
                 android:id="@+id/precio_producto_tarjeta_carrito"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/nombre_producto_tarjeta_carrito"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/nombre_producto_tarjeta_carrito"
                 android:text="@string/precio_producto"
-                android:textSize="20dp"
-                android:textColor="#fff" />
+                android:textColor="#fff"
+                android:textSize="20dp" />
 
             <RelativeLayout
 
@@ -58,6 +58,7 @@
                 android:layout_below="@id/nombre_producto_tarjeta_carrito"
                 android:padding="5dp"
                 android:background="@color/gris_claro"
+
                 android:layout_centerInParent="true"
                 >
 
