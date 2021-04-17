@@ -56,4 +56,6 @@ public interface IClienteActivity {
     void agregarAlCarrito(Producto mProducto);
 
     void cerrarVentana();
+
+    void initAdminView();
 }
