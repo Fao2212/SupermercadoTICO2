@@ -328,6 +328,7 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
     }
 
     //Inicializa el Fragment de Pantalla principal del cliente
+    @Override
     public void initAdminView() {
         Log.d(TAG, "initAdminView: Iniciando Vista de Administrador");
         Intent intent = new Intent(ClienteActivity.this, AdministradorActivity.class);

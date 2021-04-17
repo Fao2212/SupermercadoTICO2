@@ -57,9 +57,5 @@ public interface IClienteActivity {
 
     void cerrarVentana();
 
-    void borrarCarrito();
-
-    void confirmarCarrito();
-
-    void cancelarCarrito();
+    void initAdminView();
 }

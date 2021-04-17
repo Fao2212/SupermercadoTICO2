@@ -76,11 +76,22 @@ public class CarritoFragment extends Fragment implements View.OnClickListener {/
         return view;
     }
 
+    private void actualizarPrecio(){
+        float total = 0;
+        if ( mListaItemsCarrito.size() != 0 ){
+            for (Producto producto: mListaItemsCarrito) {
+                total += Float.parseFloat(producto.getPrecio());
+            }
+        }
+        totalCompra.setText("₡"+total);
+    }
+
     private void findItemsCarrito(){
         //Acá le caen todos los datos de los productos
         mListaItemsCarrito = interfazClienteActivity.getListaItemsCarrito();
         //Log.d(TAG, "findItemsCarrito: "+mListaItemsCarrito.get(0).getCategoria());
         //Inicia el recycler view
+        actualizarPrecio();
         initRecyclerView();
     }
 
