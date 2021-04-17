@@ -50,6 +50,9 @@ public class CarritoRecyclerViewAdapter extends RecyclerView.Adapter<CarritoRecy
         Log.d(TAG, "onBindViewHolder: called" );
         //Actualizar la vara
 
+        holder.precioProducto.setText(mItemsCarrito.get(position).getPrecio());
+        holder.nombreProducto.setText(mItemsCarrito.get(position).getNombre());
+
        holder.botonMasProductos.setOnClickListener((v -> {
            holder.cantidadProducto.setText("12");
            Log.d(TAG, "onBindViewHolder: clicked on: boton mas" );
@@ -94,8 +97,8 @@ public class CarritoRecyclerViewAdapter extends RecyclerView.Adapter<CarritoRecy
             nombreProducto = itemView.findViewById(R.id.nombre_producto_tarjeta_carrito);  //Se conecta con los componentes del layout
             precioProducto = itemView.findViewById(R.id.precio_producto_tarjeta_carrito);
             cantidadProducto = itemView.findViewById(R.id.cantidad_producto_tarjeta_carrito);
-            botonMenosProductos = itemView.findViewById(R.id.boton_menos_tarjeta_carrito);
-            botonMasProductos = itemView.findViewById(R.id.boton_mas_tarjeta_carrito);
+            botonMenosProductos = itemView.findViewById(R.id.boton_mas_tarjeta_carrito);
+            botonMasProductos = itemView.findViewById(R.id.boton_menos_tarjeta_carrito);
             cardView = itemView.findViewById(R.id.tarjeta_producto_carrito_card_view);
 
         }
