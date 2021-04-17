@@ -50,7 +50,7 @@ public class CarritoFragment extends Fragment implements View.OnClickListener {/
 
     private TextView totalCompra;
     private Button botonBorrarCarrito;
-    private Button botonConfirmarCarrito;
+    private Button botonConfirmarCarrito,botonCancelarCarrito;
 
 
     @Nullable
@@ -64,11 +64,14 @@ public class CarritoFragment extends Fragment implements View.OnClickListener {/
         totalCompra = view.findViewById(R.id.total_carrito_compras);
         botonBorrarCarrito = view.findViewById(R.id.boton_borrar_carrito_carrito_compras);
         botonConfirmarCarrito = view.findViewById(R.id.boton_confirmar_carrito_compras);
+        botonCancelarCarrito = view.findViewById(R.id.boton_cancelar_carrito_compras2);
         mRecyclerView = view.findViewById(R.id.carrito_compras_recyclerView);                         //< todo:Cambiar al recycler view correspondiente > !!!
         cancelado = view.findViewById(R.id.checkBoxCancelable);
         confimado = view.findViewById(R.id.checkBoxConfirmado);
         botonConfirmarCarrito.setOnClickListener(this);
         botonBorrarCarrito.setOnClickListener(this);
+        botonCancelarCarrito.setOnClickListener(this);
+
 
         //Carga las facturas a la lista
         interfazClienteActivity = (IClienteActivity) getActivity();
