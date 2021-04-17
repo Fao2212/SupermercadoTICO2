@@ -8,10 +8,19 @@ import com.example.supermercadotico.Models.Factura;
 import com.example.supermercadotico.Models.Producto;
 import com.example.supermercadotico.R;
 
+import java.util.ArrayList;
+
 /**
  * Clase utilitaria solo para guardar productos, y que se puedan cargar en memoria, no se va para el github, al final se cargo en el github
  */
 public class Productos {
+
+    public Productos() {
+        CLIENTES.add(cliente1);
+        CLIENTES.add(cliente2);
+        CLIENTES.add(cliente3);
+    }
+
     public Producto[] PRODUCTOS={
             Lechuga,Fresa, Jabon
     };
@@ -24,11 +33,27 @@ public class Productos {
             Cat1, Cat2, Cat3
     };
 
+    public ArrayList<Cliente> CLIENTES= new ArrayList<Cliente>();
+
     /*
     Cliente
      */
-    public  Cliente cliente1 = new Cliente("https://www.volunteeringsolutions.com/asset/uploads/img/page_header_image/costa_rica/san_jose/651/651_costarica.jpg",
+    public static final  Cliente cliente1 = new Cliente("https://www.volunteeringsolutions.com/asset/uploads/img/page_header_image/costa_rica/san_jose/651/651_costarica.jpg",
             "Alex01",
+            "Alex",
+            "Rodriguez",
+            "Cartago",
+            "alealex@hotmail.com",
+            "1234");
+    public static final  Cliente cliente2 = new Cliente("https://www.volunteeringsolutions.com/asset/uploads/img/page_header_image/costa_rica/san_jose/651/651_costarica.jpg",
+            "Alex02",
+            "Alex",
+            "Rodriguez",
+            "Cartago",
+            "alealex@hotmail.com",
+            "1234");
+    public static final Cliente cliente3 = new Cliente("https://www.volunteeringsolutions.com/asset/uploads/img/page_header_image/costa_rica/san_jose/651/651_costarica.jpg",
+            "Marco",
             "Alex",
             "Rodriguez",
             "Cartago",

@@ -68,9 +68,9 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
         mBarraNavegacion = findViewById(R.id.navbar_inferior_view_cliente); //Barra de navegacion
         mBarraNavegacion.setOnNavigationItemSelectedListener(this);
         infodummyparaprobar = new Productos();
-        //initFragmentoLogIn();
-        crearCarritoDeCompra();//TODO:QUITAR
-        initFragmento_Facturas();
+        initFragmentoLogIn();
+        //crearCarritoDeCompra();//TODO:QUITAR
+        //initFragmento_Facturas();
     }
 
     private void initBarraNavegacion(){
@@ -306,7 +306,7 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
     //Metodo que guarda los nuevos usuarios creados en la base de datos.
     @Override
     public void registrarUsuario(Cliente cliente) {
-        clientes.add(cliente);
+        infodummyparaprobar.CLIENTES.add(cliente);
     }
 
 
@@ -346,6 +346,14 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
     public void crearCarritoDeCompra() //Se usa para crear cada nueva orden de compra que el cliente necesite hacer. Siempre y cuando no tenga un pedido confirmado
     {
             this.carrito = new Carrito();
+    }
+
+    public void limpiarCarrito()
+    {
+        if(!carrito.isConfirmado())
+        {
+            this.carrito = new Carrito();
+        }
     }
 
     public void comenzarCuentaRegresiva()//Hacer asincronica
@@ -392,9 +400,15 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
     //-------------------------------DataBase Stuff------------------------------------
 
     private Cliente checkClienteInDatabase(String username,String password) {
-        Cliente cliente = null;//Todo:Traer de la base de datos
-        // cliente = Buscar en base de datos return username.equals("") && password.equals("");
-        return cliente;
+        Cliente cliente;//Todo:Traer de la base de datos
+        for (Cliente currentClient:infodummyparaprobar.CLIENTES
+             ) {
+            if(currentClient.getNombreUsuario().equals(username) && currentClient.getContrasena().equals(password)) {
+                crearCarritoDeCompra();
+                return currentClient;
+            }
+        }
+        return null;
     }
 
     private void getUserFromDataBase(String userName){
