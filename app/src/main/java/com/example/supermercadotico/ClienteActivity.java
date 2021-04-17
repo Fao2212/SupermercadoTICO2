@@ -350,11 +350,12 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
             this.carrito = new Carrito();
     }
 
-    public void limpiarCarrito()
+    public void borrarCarrito()
     {
         if(!carrito.isConfirmado())
         {
             this.carrito = new Carrito();
+            initFragmentoCarrito();
         }
     }
 
@@ -374,11 +375,18 @@ public class ClienteActivity extends AppCompatActivity implements IClienteActivi
         //Cuando terminan los 5 minutos entonces se graba en la base de datos.
     }
 
-    public void confirmarOrden()
+    @Override
+    public void confirmarCarrito()
     {
         carrito.cancelable = true;
         carrito.confirmado = true;
-        comenzarCuentaRegresiva();
+        //comenzarCuentaRegresiva();
+    }
+
+    @Override
+    public void cancelarCarrito() {
+        this.carrito = new Carrito();
+        initFragmentoCarrito();
     }
 
     public void orderCompletada()

@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -43,6 +44,10 @@ public class CarritoFragment extends Fragment implements View.OnClickListener {/
     private ArrayList<Producto> mListaItemsCarrito = new ArrayList<>();        //< todo:Cambiar a la lista del objeto correspondiente > !!!
     private IClienteActivity interfazClienteActivity;
 
+    private IClienteActivity mInterface;
+
+    private CheckBox confimado,cancelado;
+
     private TextView totalCompra;
     private Button botonBorrarCarrito;
     private Button botonConfirmarCarrito;
@@ -51,6 +56,7 @@ public class CarritoFragment extends Fragment implements View.OnClickListener {/
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        mInterface = (IClienteActivity) getActivity();
         View view = inflater.inflate(R.layout.fragment_carrito,container, false); //< todo:Cambiar al layout correspondiente > !!!
         Log.d(TAG, "onCreateView: Iniciado Carrito de compras");
 
@@ -59,7 +65,8 @@ public class CarritoFragment extends Fragment implements View.OnClickListener {/
         botonBorrarCarrito = view.findViewById(R.id.boton_borrar_carrito_carrito_compras);
         botonConfirmarCarrito = view.findViewById(R.id.boton_confirmar_carrito_compras);
         mRecyclerView = view.findViewById(R.id.carrito_compras_recyclerView);                         //< todo:Cambiar al recycler view correspondiente > !!!
-
+        cancelado = view.findViewById(R.id.checkBoxCancelable);
+        confimado = view.findViewById(R.id.checkBoxConfirmado);
         botonConfirmarCarrito.setOnClickListener(this);
         botonBorrarCarrito.setOnClickListener(this);
 
@@ -93,11 +100,22 @@ public class CarritoFragment extends Fragment implements View.OnClickListener {/
 
         switch (v.getId()){
             case R.id.boton_borrar_carrito_carrito_compras:{
-                Log.d(TAG, "onClick: Borrando Carrito de compras");
+                mInterface.borrarCarrito();
+                confimado.setChecked(false);
+                cancelado.setChecked(false);
                 break;
             }
             case R.id.boton_confirmar_carrito_compras:{
-                Log.d(TAG, "onClick: Confirmando Carrito De compras");
+
+                mInterface.confirmarCarrito();
+                confimado.setChecked(true);
+                cancelado.setChecked(true);
+                break;
+            }
+            case R.id.boton_cancelar_carrito_compras2:{
+                confimado.setChecked(false);
+                cancelado.setChecked(false);
+                mInterface.cancelarCarrito();
             }
         }
     }

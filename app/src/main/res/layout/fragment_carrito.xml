@@ -114,6 +114,7 @@
                             android:text="Confirmar"
                             android:textAllCaps="false"
                             android:textColor="@color/blanco"
+                            android:textColorHighlight="#FFFFFF"
                             android:textSize="20sp" />
 
                     </RelativeLayout>
@@ -122,6 +123,36 @@
 
 
             </LinearLayout>
+
+            <Button
+                android:id="@+id/boton_cancelar_carrito_compras2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="15dp"
+                android:layout_marginRight="17dp"
+                android:backgroundTint="@color/verde"
+                android:text="Cancelar"
+                android:textAllCaps="false"
+                android:textColor="@color/blanco"
+                android:textColorHighlight="#FFFFFF"
+                android:textSize="20sp" />
+
+            <CheckBox
+                android:id="@+id/checkBoxCancelable"
+                android:layout_width="194dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:editable="false"
+                android:text="Cancelable" />
+
+            <CheckBox
+                android:id="@+id/checkBoxConfirmado"
+                android:layout_width="196dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:editable="false"
+                android:text="Confirmado" />
 
 
         </LinearLayout>
