@@ -66,7 +66,6 @@ public class BusquedaProductosRecyclerViewAdapter extends RecyclerView.Adapter<B
             //Cuando se presione un producto, va a pasar por la interfaz y el activity lo va a cargar en el fragmento de la descripcion
             mInterface.inflateProductos_Categoria(mCategorias.get(position).getId_categoria());
         }));
-
     }
 
     //Acá es donde le pegamos la interfaz al fragmento
